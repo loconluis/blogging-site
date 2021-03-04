@@ -1,3 +1,12 @@
+import MainPage from "../app/MainPage";
+import Layout from "../app/MainPage";
+
 export default function index() {
-  return <div>Initial Page</div>;
+  return (
+    <div>
+      <div>
+        <MainPage />
+      </div>
+    </div>
+  );
 }
