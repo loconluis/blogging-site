@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 0 0 0 calc(100vw - 100%);
   color: var(--dark-grey);
   /* font-family: Helvetica, Arial, sans-serif; */
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans,
@@ -41,6 +41,11 @@ h4,
 h5,
 h6 {
   font-weight: 600;
+}
+
+p {
+  line-height: 1.625rem;
+  margin-bottom: 1.625rem;
 }
 
 .container {
@@ -96,6 +101,11 @@ h6 {
 .sidebar-main-navigation-list-item {
   padding: 0;
   margin: 0.625rem 0;
+}
+
+.sidebar-main-navigation-list-item a {
+  text-decoration: none;
+  color: var(--dark-grey);
 }
 
 .sidebar-main-navigation-list a:hover {
@@ -220,4 +230,24 @@ h6 {
 .sp-item-anchor:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.about-title,
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 3.25rem;
+  margin-top: 0;
+  margin-bottom: 2.35625rem;
+}
+
+.mail-anchor {
+  color: var(--blue);
+}
+
+.sidebar-main-avatar {
+  display: inline-block;
+  margin-bottom: 0;
+  border-radius: 50%;
+  background-clip: padding-box;
 }
