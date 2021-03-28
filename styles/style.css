@@ -213,6 +213,7 @@ p {
 
 .sp-item-title-anchor {
   text-decoration: none;
+  color: var(--dark-grey);
 }
 
 .sp-item-description {
