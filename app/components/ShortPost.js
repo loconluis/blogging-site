@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { parseISO, format } from 'date-fns'
+import { parseISO, format } from "date-fns";
 
 export default function ShortPost({ post }) {
   return (
     <div className="sp-item">
       <div>
-        <span className="sp-item-date">{format(parseISO(post.publishedAt), 'MMMM dd, yyyy')}</span>
+        <span className="sp-item-date">
+          {format(parseISO(post.publishedAt), "MMMM dd, yyyy")}
+        </span>
       </div>
       <h2 className="sp-item-title">
         <Link href={`/blog/${post.slug}`}>
@@ -13,7 +15,9 @@ export default function ShortPost({ post }) {
         </Link>
       </h2>
       <p className="sp-item-description">{post.description}</p>
-      <a className="sp-item-anchor">Read</a>
+      <Link href={`/blog/${post.slug}`}>
+        <a className="sp-item-anchor">Read</a>
+      </Link>
     </div>
   );
 }

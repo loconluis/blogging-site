@@ -1,3 +1,5 @@
+import CodeBlock from "./CodeBlock";
+
 const HeadLine1 = (props) => {
   return <h1>{props}</h1>;
 };
@@ -11,9 +13,8 @@ const MDXComponents = {
   h4: (props) => <h4>{props.children}</h4>,
   h5: (props) => <h5>{props.children}</h5>,
   h6: (props) => <h6>{props.children}</h6>,
-  // inlineCode: (props) => (
-  //     <Code colorScheme="yellow" fontSize="0.84em" {...props} />
-  // ),
+  inlineCode: (props) => <CodeBlock {...props} />,
+  code: CodeBlock,
   br: (props) => <br />,
   // hr: Hr,
   // a: CustomLink,
