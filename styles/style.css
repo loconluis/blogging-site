@@ -4,6 +4,7 @@
   --dark-grey: #222;
   --grey: #666;
   --blue: #1c88cb;
+  --pink: #de1d8d;
   --dark-blue: #364051;
   --off-white: #f7f7f7;
 
@@ -114,7 +115,7 @@ p {
 }
 
 .sidebar-main-navigation-list a:hover {
-  color: var(--blue);
+  color: var(--pink);
   text-decoration: underline;
   cursor: pointer;
 }
@@ -138,7 +139,7 @@ p {
 }
 
 .sidebar-main-social__info a:hover {
-  color: var(--blue);
+  color: var(--pink);
   cursor: pointer;
 }
 
@@ -175,7 +176,7 @@ p {
 }
 
 .sidebar-main-social a:hover {
-  color: var(--blue);
+  color: var(--pink);
   cursor: pointer;
 }
 
@@ -243,7 +244,7 @@ p {
 }
 
 .sp-item-anchor {
-  color: var(--blue);
+  color: var(--pink);
   text-decoration: none;
 }
 
@@ -263,7 +264,7 @@ p {
 }
 
 .mail-anchor {
-  color: var(--blue);
+  color: var(--pink);
 }
 
 .sidebar-main-avatar {
@@ -307,7 +308,7 @@ p {
 }
 
 .blog-navbar-button:hover {
-  color: var(--blue);
+  color: var(--pink);
   cursor: pointer;
 }
 
@@ -346,6 +347,7 @@ p {
 }
 
 .blog-info-time {
+  color: var(--pink);
   text-transform: uppercase;
   font-weight: 600;
   margin: 0;

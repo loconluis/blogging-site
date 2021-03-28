@@ -1,11 +1,14 @@
 import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
+import theme from 'prism-react-renderer/themes/nightOwl'
 
-export default ({ children, className }) => {
+console.log('theme', theme)
+
+const CodeBlock = ({ children, className }) => {
   const language = className.replace(/language-/, "");
 
   return (
-    <Highlight {...defaultProps} code={children.trim()} language={language}>
+    <Highlight {...defaultProps} code={children.trim()} language={language} theme={theme} >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={{ ...style, padding: "20px" }}>
           {tokens.map((line, i) => (
@@ -20,3 +23,5 @@ export default ({ children, className }) => {
     </Highlight>
   );
 };
+
+export default CodeBlock;
