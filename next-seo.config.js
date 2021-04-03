@@ -33,3 +33,5 @@ const SEO = {
     cardType: 'summary_large_image',
   },
 };
+
+export default SEO;
