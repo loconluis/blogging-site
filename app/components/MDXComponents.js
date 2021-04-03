@@ -17,11 +17,11 @@ const MDXComponents = {
   code: CodeBlock,
   br: (props) => <br />,
   // hr: Hr,
-  // a: CustomLink,
+  a: (props) => <a className="mdx-anchor">{props.children}</a>,
   p: (props) => <p>{props.children}</p>,
-  // ul: (props) => <ul {...props}></ul>,
-  // ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
-  // li: (props) => <Box as="li" pb={1} {...props} />,
+  ul: (props) => <ul {...props} className="mdx-list-ul"></ul>,
+  ol: (props) => <ol className="mdx-list-ol">{props.children}</ol>,
+  li: (props) => <li className="mdx-list-item">{props.children}</li>
 };
 
 // export { CustomLink };

@@ -11,9 +11,7 @@ export default function Sidebar() {
         className="sidebar-main"
         //style={{ border: "1px solid blue" }}
       >
-        <a>
-          <Avatar />
-        </a>
+        <Avatar />
         <h1 className="sidebar-main-title">Luis Locon</h1>
         <p className="sidebar-main-description">
           27 | Software Developer 👨🏾‍💻 , Self-taught 📚 , Community and tech

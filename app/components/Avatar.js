@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function Avatar({ size }) {
   return (
     <Link href="/">
-      <a>
+      <a id="avatar">
         <Image
           width={size == "small" ? 50 : 75}
           height={size == "small" ? 50 : 75}
