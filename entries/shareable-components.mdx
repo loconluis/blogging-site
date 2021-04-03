@@ -1,0 +1,49 @@
+---
+title: "Shared Components"
+publishedAt: "2018-05-10"
+description: "It is common see boilerplates to start new React apps, Vue, etc. This post is for How I decided to create a boilerplate for shared components."
+author: "Luis Locon"
+---
+
+If you are into the React ecosystem, you are familiar with components, this is how React works and why it is so popular.
+The way we can abstract the logic and reuse it again anywhere we want is great. Having this idea about components, we can move on to talk about shared components.
+
+A shared components is that component that someone made available for other people. An example of this is [React-Datepicker](https://reactdatepicker.com/), this is the easy way in wich we can set up a calendar in our projects,
+it has an api to use it and it is also is fully customizable.
+Other example of a shared component is [React-strap](https://reactstrap.github.io/) this a suit of components using the System Design of [Bootstrap](https://getbootstrap.com/).
+
+In conclusion a shared component is a component that we make available to others in our own organizations or as Open Source Code. A component that does an specific functionality that other can exploit.
+
+## Create-react-shared-component the project
+
+It is common to see boilerplates to start new apps, examples of this is [Create-react-app](https://github.com/facebook/create-react-app) or [React-Boilerplate](https://github.com/react-boilerplate/react-boilerplate)
+this projects are very rated/starred in github, because they permit setup a new app with all the dependencies and necessary scripts in minutes.
+
+I based this project on that idea and also in a need that I had to create many shared components as requirement of my work.
+This is how [Create-react-shared-component](https://www.npmjs.com/package/create-react-shared-component) was created.
+
+**CRSA** is a _CLI_, so it is easy to setup. The only requirement to install it is have Node 7.X.X or above.
+
+- Run this command to install:
+
+```console
+$ npm install -g create-react-shared-component [project-name]
+or
+$ npx create-react-shared-component [project-name]
+```
+
+_[project-name] is an argument to set the name of the project. Includes package.json, git initialization, etc._
+
+- After the installation process, this is how we can use it:
+
+```console
+$ create-react-shared-component [project-name]
+$ cd [project-name]
+$ npm start
+$ npm link
+
+>> Open src/index.js
+>> Link to other project this module npm link [project-name]
+```
+
+This project is OSS, so I'm glad to receive PRs to improve it and keep it updated. You can see the code [here](https://github.com/loconluis/create-react-shared-component).

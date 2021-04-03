@@ -89,7 +89,7 @@ p {
 .sidebar-main {
   padding: var(--padding-large);
   /* max-width: 20rem; */
-  border-right: 0.5px dashed var(--dark-blue);
+  border-right: 0.5px dashed #a8a7a7;
   max-height: 80rem;
 }
 

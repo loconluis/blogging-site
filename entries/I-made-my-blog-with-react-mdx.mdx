@@ -1,0 +1,247 @@
+---
+title: "I made my personal blog with Next + MDX"
+publishedAt: "2020-04-03"
+description: "I have been working on a personal blog for a long time. Finally after a few iterations I release it and this is the post on how I built it."
+author: "Luis Locon"
+---
+
+I have been working on a personal blog for a long time. I always delayed because it is hard to choose the tech stack,
+If you write in google _How create a blog?_ you surely going to find many results. Using a product dedicated to handle content
+like wordpress or ghost is the easy way to configure one in minutes. Also if you add the word _Dev Blog_ the new result appears,
+as developer we always love the challenge to build something. But the question is _What tool use?_
+
+So after of watching a lot of videos of how others build their own blogs
+and inspired by [@rauchg](https://twitter.com/rauchg) (his blog has this minimal theme that I like).
+I decided to create my own, as simple as I can do it. I was really looking for the challenge to create it.
+
+### What is Next.Js?
+
+Looking for the challenge I decided to use Next for one reason: **I really ❤️ it**.
+
+For me is the easiest way to start a React App with an amazing development experience 🤯. But, What is Next? Well, in words of them:
+**_Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed._**
+
+This a kill feature **_No config needed_**. This is true, but in any case you need to configure something like use a preprocessor or postprocessor or whatever,
+they expose a file to reach the configuration in webpack.
+
+The next step is to choosing where to the posts data. I first thought of using a headless CMS like [Strapi](https://strapi.io/) or [KeystoneJS](https://www.keystonejs.com/),
+but I don't want to develop the backend of this, the idea is that can be a weekend project, and for my needs the most accurate solutions is create statics, because the content is plain text.
+So use markdown is useful. With that in mind I choose to use **MDX**.
+
+### What is MDX?
+
+**_MDX is an authorable format that lets you seamlessly write JSX in your Markdown documents. You can import components, such as interactive charts or alerts, and embed them within your content. This makes writing long-form content with components a blast 🚀._**
+
+This extract if from the documentation of MDX, but in simple words: MDX is the way we can write Markdown and also use the benefits of components, to style Mardkown elements or import React components
+and render everything in the document.
+
+After that introduction this is the steps I follow to built this project
+
+### Setting up Next with MDX
+
+First create a next app
+
+```console
+$ yarn init -y
+$ yarn add next react-dom react
+```
+
+After that, we need to write a necesary scripts to run the app, in the _package.json_ we going to write the **scripts** part
+
+```json
+{
+  "name": "loconluis-bloggin",
+  "version": "1.0.0",
+  "description": "Blog and personal site",
+  "main": "index.js",
+  "author": "Luis Locon <luis.locon@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^10.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
+```
+
+How **_Next_** works we should create a directory called **_pages_** with **_index.js_** file. In the next image we will see how I order the project
+
+```console
+|-- app
+    |-- <All components files>
+|-- entries
+    |-- <All the markdown files with extension .mdx>
+|-- lib
+    |-- mdx.js
+|-- public
+    |-- <Assets and icons>
+|-- styles
+    |-- style.css
+|-- pages
+    |-- index.js
+    |-- _app.js
+    |-- _document.js
+    |-- blog
+        |-- [slug].js
+|-- package.json
+```
+
+For practicality we going to omit what is inside on entries, app, and public directories. In pages **_Next_** handle the routes of the application
+if you want to create a dynamic route you can write the file like **_[slug].js_**.
+
+In this moment we setup the static views of the app, we can reach it pages trought URLS. Now is moment to setup MDX
+
+We need to add new dependencies
+
+```console
+$ yarn add next-mdx-remote gray-matter
+```
+
+We'll to handle all the configuration in the **_lib/mdx.js_** file
+
+```js
+// mdx.js
+import fs from "fs";
+import matter from "gray-matter";
+import renderToString from "next-mdx-remote/render-to-string";
+import path from "path";
+// This a file with a JSON of styled components to use with markdown elements
+import MDXComponents from "../app/components/MDXComponents";
+
+const root = process.cwd();
+
+// Used to load paths of the files
+export async function getFiles(type) {
+  return fs.readdirSync(path.join(root, "entries", type));
+}
+
+// Obtain a file from a Route and return a ready content and useful information
+export async function getFileBySlug(type, slug) {
+  const source = slug
+    ? fs.readFileSync(path.join(root, "entries", type, `${slug}.mdx`), "utf-8")
+    : fs.readFileSync(path.join(root, "entries", `${type}.mdx`), "utf-8");
+
+  const { data, content } = matter(source);
+  const mdxSource = await renderToString(content, {
+    components: MDXComponents,
+  });
+
+  return {
+    mdxSource,
+    frontMatter: {
+      wordCount: content.split(/\s+/gu).length,
+      slug: slug || null,
+      ...data,
+    },
+  };
+}
+
+// Get the front matter info from files
+export async function getAllFilesFrontMatter(type) {
+  const files = fs.readdirSync(path.join(root, "entries", type));
+
+  return files.reduce((allPosts, postSlug) => {
+    const source = fs.readFileSync(
+      path.join(root, "entries", type, postSlug),
+      "utf8"
+    );
+    const { data, content } = matter(source);
+
+    return [
+      {
+        ...data,
+        slug: postSlug.replace(".mdx", ""),
+      },
+      ...allPosts,
+    ];
+  }, []);
+}
+```
+
+After that it's just calling the functions inside the files from the pages
+
+**_pages/index.js_**
+
+```js
+import Head from "next/head";
+import MainPage from "../app/MainPage";
+import { getAllFilesFrontMatter } from "../lib/mdx";
+
+export default function Index({ posts }) {
+  const _posts = sortPost(posts);
+  return (
+    <>
+      <Head>
+        <title>Blog by Luis Locon</title>
+      </Head>
+      <MainPage posts={_posts} />
+    </>
+  );
+}
+
+const sortPost = (posts) => {
+  const _posts = posts.sort((a, b) => {
+    return new Date(b.publishedAt) - new Date(a.publishedAt);
+  });
+  return _posts;
+};
+
+export async function getStaticProps() {
+  const posts = await getAllFilesFrontMatter("/");
+  return { props: { posts } };
+}
+```
+
+**_pages/blog/[slug].js_**
+
+```js
+import hydrate from "next-mdx-remote/hydrate";
+import { getFiles, getFileBySlug } from "../../lib/mdx";
+import Head from "next/head";
+import BlogLayout from "../../app/Layout/Blog";
+import MDXComponents from "../../app/components/MDXComponents";
+
+export default function BlogPage({ mdxSource, frontMatter }) {
+  const content = hydrate(mdxSource, {
+    components: MDXComponents,
+  });
+
+  return (
+    <>
+      <Head>
+        <title>{frontMatter.title} - Blog by Luis Locon</title>
+      </Head>
+      <BlogLayout frontMatter={frontMatter}>{content}</BlogLayout>
+    </>
+  );
+}
+
+export async function getStaticPaths() {
+  const posts = await getFiles("/");
+
+  return {
+    paths: posts.map((p) => ({
+      params: {
+        slug: p.replace(/\.mdx/, ""),
+      },
+    })),
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const post = await getFileBySlug("/", params.slug);
+  return { props: post };
+}
+```
+
+And that's it, now you can create new files .mdx in entries. And the application automatically will recognize the file and going to list and render it.
+
+You can see the code [here](https://github.com/loconluis/blogging-site).
+
+I Hope you can find this useful. Any doubt you can reach me via twitter [@LoconLuis](https://twitter.com/loconluis).

@@ -3,8 +3,10 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 
 const CodeBlock = ({ children, className }) => {
-  const language = className.replace(/language-/, "");
-
+  let language = "console";
+  if (className) {
+    language = className.replace(/language-/, "");
+  }
   return (
     <Highlight
       {...defaultProps}

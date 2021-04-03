@@ -17,7 +17,7 @@ const MDXComponents = {
   code: CodeBlock,
   br: (props) => <br />,
   // hr: Hr,
-  a: (props) => <a className="mdx-anchor">{props.children}</a>,
+  a: (props) => <a href={props.href} target="_blank" className="mdx-anchor">{props.children}</a>,
   p: (props) => <p>{props.children}</p>,
   ul: (props) => <ul {...props} className="mdx-list-ul"></ul>,
   ol: (props) => <ol className="mdx-list-ol">{props.children}</ol>,
