@@ -71,7 +71,7 @@ p {
   margin-right: auto;
 }
 .container::after {
-  content: "";
+  /* content: ""; */
   display: table;
   clear: both;
 }
@@ -89,6 +89,8 @@ p {
 .sidebar-main {
   padding: var(--padding-large);
   /* max-width: 20rem; */
+  border-right: 0.5px dashed var(--dark-blue);
+  max-height: 80rem;
 }
 
 .sidebar-main-title {
@@ -398,6 +400,7 @@ p {
   }
   .sidebar-main {
     padding-bottom: var(--padding-medium);
+    border-right: none;
   }
 
   .sidebar-main-navigation {
@@ -476,12 +479,4 @@ p {
   .content-main {
     padding-bottom: 40px;
   }
-/* 
-  .sidebar-main-social__info {
-    display: none;
-  }
-
-  #avatar {
-    display: none;
-  } */
 }
