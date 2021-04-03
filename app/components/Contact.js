@@ -7,7 +7,7 @@ export default function Contact() {
         Contact Me
       </h1>
       <p>
-        You can reach me on my mail <a href="mailto:luis.locon@gmail.com">luis.locon@gmail.com</a>
+        You can reach me on my social media or send me an email <a href="mailto:luis.locon@gmail.com">luis.locon@gmail.com</a>
       </p>
     </>
   )

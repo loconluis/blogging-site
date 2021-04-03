@@ -472,6 +472,10 @@ p {
   pre {
     overflow: scroll;
   }
+
+  .content-main {
+    padding-bottom: 40px;
+  }
 /* 
   .sidebar-main-social__info {
     display: none;
