@@ -5,30 +5,47 @@ export default function About() {
     <>
       <h1 className="about-title">About me</h1>
       <p>
-        I'm a software developer at{" "}
+        Hi, I'm <strong>Luis Locon</strong>, currently I'm working as a Software
+        Developer at{" "}
         <a href="https://www.cognits.co/" target="_blank">
           Cognits
         </a>
-        , where I focus on developing and designing solutions that help our
-        clients optimize their business. We develop Mobile and Web apps.
+        , where I focus to Design and Develop solutions for our clients..
       </p>
       <p>
-        I spent most of the time as Full Stack Javascript Developer. So yeah I
-        really love it.
+        I always consider myself as a <strong>curious</strong> person, and that
+        has led me to be who I am a <strong>Self-Taught</strong>.
       </p>
       <p>
-        I am self-taught, that is why I like to teach others the things,
-        concepts and experiences that I learned in these years more as a mentor
-        than as a teacher. Because you can always learn from someone else.
+        I'm interested in the <strong>process</strong> that led to a complex
+        solution, the why and the how. I like to contrast that learning process
+        with the process of launching a new <strong>product</strong>.
       </p>
       <p>
-        I'm a passionate about technology, open source code and communities.
-        Also I consider myself as enthusiast about Design. I like to explore the
-        creative side of everything.
+        I'm passionate about <strong>technology</strong>,{" "}
+        <strong>innovation</strong>, <strong>OSS</strong>, and{" "}
+        <strong>communities</strong>. I'm also a <strong>design</strong>{" "}
+        enthusiast, I like to explore the creative side of everything and I
+        think design is that. You can see how the artist solves a situation with
+        creativity, in simple words I like <strong>creativity</strong>.
       </p>
       <p>
-        I spend my spare time with family, friends, playing videogames and
-        catching up on all things about Sports.
+        As a community person, I like to <strong>teach</strong> what I learned,
+        I really enjoy a lot spending time <strong>discussing/speaking</strong>{" "}
+        to people about common topics, trends, and software development.
+      </p>
+      <p>
+        When Im not coding I enjoy spending my spare time with{" "}
+        <strong>family and friends</strong>, <strong>traveling</strong>,{" "}
+        <strong>videogames</strong>, <strong>reading books</strong>, and
+        <strong>watching sports</strong>.
+      </p>
+      <p>
+        My hobbies are: Sneaker seeker and pet my{" "}
+        <a href="https://www.instagram.com/lolatheflame/" target="_blank">
+          dog
+        </a>
+        .
       </p>
     </>
   );
