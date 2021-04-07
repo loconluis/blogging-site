@@ -7,10 +7,7 @@ import { routes } from "./utils/routes";
 export default function Sidebar() {
   return (
     <div className="sidebar">
-      <div
-        className="sidebar-main"
-        //style={{ border: "1px solid blue" }}
-      >
+      <div className="sidebar-main">
         <Avatar />
         <h1 className="sidebar-main-title">Luis Locon</h1>
         <p className="sidebar-main-description">
