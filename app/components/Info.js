@@ -16,7 +16,7 @@ export default function Info({ frontMatter, views }) {
           </p>
           <Social info />
           <p className={`blog-info-data-views ${!views ? 'views-loading' : ''}`}>
-            {formatNumberWithCommas(views)} views
+            {formatNumberWithCommas(views)} {views == 1 ? "view" : "views"}
           </p>
         </div>
         <p className="blog-info-time">{frontMatter.readingTime.text}</p>
