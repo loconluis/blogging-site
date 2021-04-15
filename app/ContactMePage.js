@@ -1,5 +1,5 @@
-import Layout from "./Layout/Index";
-import Contact from "./components/Contact";
+import Layout from "@/Layout/Index";
+import Contact from "@/components/Contact";
 
 export default function AboutPage() {
   return (

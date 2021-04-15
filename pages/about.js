@@ -1,5 +1,5 @@
 import Head from "next/head";
-import AboutPage from "../app/AboutPage";
+import AboutPage from "@/AboutPage";
 export default function about() {
   return (
     <>

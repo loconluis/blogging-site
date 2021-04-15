@@ -1,5 +1,5 @@
 import Head from "next/head";
-import ContactMePage from "../app/ContactMePage";
+import ContactMePage from "@/ContactMePage";
 
 export default function Contact() {
   return (

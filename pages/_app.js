@@ -1,8 +1,8 @@
 import { DefaultSeo } from "next-seo";
 import { useState, useEffect } from "react";
-import ThemeContext from "../app/context/Theme";
+import ThemeContext from "@/context/Theme";
 import SEO from "../next-seo.config";
-import "../styles/style.css";
+import "@/styles/style.css";
 
 function MyApp({ Component, pageProps }) {
   const [theme, setTheme] = useState("light");
