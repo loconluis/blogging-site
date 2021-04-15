@@ -1,6 +1,6 @@
-import Info from "../components/Info";
-import NavbarBlog from "../components/NavbarBlog";
-import ThemeSwitcher from "../components/ThemeSwitcher";
+import Info from "@/components/Info";
+import NavbarBlog from "@/components/NavbarBlog";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function Blog({ frontMatter, views, children }) {
   return (

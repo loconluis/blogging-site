@@ -1,5 +1,5 @@
-import SideBarNavigation from "../components/Sidebar";
-import ThemeSwitcher from '../components/ThemeSwitcher'
+import SideBarNavigation from "@/components/Sidebar"
+import ThemeSwitcher from '@/components/ThemeSwitcher'
 
 export default function Layout({ children }) {
   return (

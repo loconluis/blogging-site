@@ -1,5 +1,5 @@
-import Layout from "./Layout/Index";
-import ShortPost from "./components/ShortPost";
+import Layout from "@/Layout/Index";
+import ShortPost from "@/components/ShortPost";
 
 export default function MainPage({ posts }) {
   return (

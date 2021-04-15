@@ -1,6 +1,6 @@
 import Head from "next/head";
-import MainPage from "../app/MainPage";
-import { getAllFilesFrontMatter } from "../lib/mdx";
+import MainPage from "@/MainPage";
+import { getAllFilesFrontMatter } from "@/lib/mdx";
 
 export default function Index({ posts }) {
   const _posts = sortPost(posts);
