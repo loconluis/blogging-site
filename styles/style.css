@@ -161,7 +161,7 @@ p {
 
 .sidebar-main-social-list {
   display: flex;
-  flex-flow: row wrap;
+  /* flex-flow: row wrap; */
   flex-grow: 0;
   flex-shrink: 0;
   list-style: none;
