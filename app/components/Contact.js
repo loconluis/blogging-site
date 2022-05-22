@@ -5,7 +5,7 @@ export default function Contact() {
         Contact Me
       </h1>
       <p>
-        You can reach me on my social media or send me an email <a href="mailto:luis.locon@gmail.com">luis.locon@gmail.com</a>
+        Check the buttons in the sidebar or send me an email <a href="mailto:luis.locon@gmail.com">luis.locon@gmail.com</a>
       </p>
     </>
   )
