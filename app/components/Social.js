@@ -19,11 +19,6 @@ export default function Social({ info }) {
             <FaTwitter />
           </a>
         </li>
-        <li className="sidebar-main-social-list-item">
-          <a href="https://read.cv/loconluis" target="_blank" aria-label="Resume">
-            <FaRegFileAlt />
-          </a>
-        </li>
       </ul>
     </div>
   );
