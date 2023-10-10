@@ -5,11 +5,7 @@ export default function About() {
       <h1 className="about-title">About me</h1>
       <p>
         Hi, I'm <strong>Luis Locon</strong> currently I working as a Software
-        Engineer at{" "}
-        <a href="https://www.3pillarglobal.com" target="_blank">
-          3 Pillar Global, S.A.
-        </a>
-        , where I have been part of many develop teams for Top Notch companies, most of the time working with <strong>Typescript</strong>, <strong>React</strong>, and <strong>Graphql</strong>.
+        Engineer where I have been part of many develop teams for Top Notch companies, most of the time working with <strong>Typescript</strong>, <strong>React</strong>, and <strong>Graphql</strong>.
       </p>
       <p>
         I like the challenge of being an Engineer, I'm fascinated with solving complex problems. But also I'm a very enthusiast of the Product since their creation to the moment is a reality for the customers.
