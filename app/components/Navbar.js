@@ -18,7 +18,7 @@ export default function Navbar({ tabs }) {
               key={index}
             >
               <Link href={el.route}>
-                <a>{el.name}</a>
+                <p>{el.name}</p>
               </Link>
             </li>
           );

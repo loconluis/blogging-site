@@ -11,12 +11,12 @@ export default function ShortPost({ post }) {
       </div>
       <h2 className="sp-item-title">
         <Link href={`/blog/${post.slug}`}>
-          <a className="sp-item-title-anchor">{post.title}</a>
+          <p className="sp-item-title-anchor">{post.title}</p>
         </Link>
       </h2>
       <p className="sp-item-description">{post.description}</p>
       <Link href={`/blog/${post.slug}`}>
-        <a className="sp-item-anchor">Read</a>
+        <p className="sp-item-anchor">Read</p>
       </Link>
     </div>
   );
