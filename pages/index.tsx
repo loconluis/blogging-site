@@ -16,7 +16,9 @@ export default function Index({ posts }) {
 
 const sortPost = (posts) => {
   const _posts = posts.sort((a, b) => {
-    return new Date(b.publishedAt) - new Date(a.publishedAt);
+    return (
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    );
   });
   return _posts;
 };

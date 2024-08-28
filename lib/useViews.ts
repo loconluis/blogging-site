@@ -1,37 +1,37 @@
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState } from "react";
+import firebase from "firebase";
 export default function useViews() {
   const [views, setViews] = useState(null);
-  const [db, setDb] = useState(null);
-  const [postID, setPostID] = useState(null);
+  const [db, setDb] = useState<firebase.database.Database | null>(null);
+  const [postID, setPostID] = useState<string>("");
 
   useEffect(() => {
     const loadViews = () => {
       if (db == null) {
         const _postID = getPostId();
-        console.log('postId', _postID);
-        import('./firebase')
+        console.log("postId", _postID);
+        import("./firebase")
           .then(({ default: _db }) => {
             const db = _db.database();
             setDb(db);
             setPostID(_postID);
-            db.ref().child(_postID).on('value', onViews);
+            db.ref().child(_postID).on("value", onViews);
           })
           .catch((err) => console.error(err));
 
         // Fetch the views
-        if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'preview') {
+        if (process.env.NODE_ENV === ("production" || "preview")) {
           fetch(`/api/view?id=${encodeURIComponent(_postID)}`)
             .then((res) => res.json())
             .then(({ total, error }) => {
               if (error) {
-                console.error('View save error:', error);
+                console.error("View save error:", error);
               } else {
-                console.info('View saved. Total views:', total);
+                console.info("View saved. Total views:", total);
               }
             })
             .catch((err) => {
-              console.error('View store error', err);
+              console.error("View store error", err);
             });
         }
       }
@@ -41,7 +41,7 @@ export default function useViews() {
 
     const cleanLoadViews = () => {
       if (db) {
-        db.ref().child(postID).off('value', onViews);
+        db.ref().child(postID).off("value", onViews);
       }
     };
 
@@ -49,7 +49,7 @@ export default function useViews() {
   }, []);
 
   const getPostId = () => {
-    return window.location.pathname.substr(1).replace(/(\d+)\//, '$1-');
+    return window.location.pathname.substr(1).replace(/(\d+)\//, "$1-");
   };
 
   const onViews = (views) => {

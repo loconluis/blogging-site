@@ -1,8 +1,8 @@
-import Highlight, { defaultProps } from "prism-react-renderer";
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 
 const CodeBlock = ({ children, className }) => {
-  let language = "console";
+  let language: Language = "markdown";
   if (className) {
     language = className.replace(/language-/, "");
   }

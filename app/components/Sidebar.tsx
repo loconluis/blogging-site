@@ -11,10 +11,12 @@ export default function Sidebar() {
         <Avatar />
         <h1 className="sidebar-main-title">Luis Locon</h1>
         <p className="sidebar-main-description">
-          Software Engineer 👨🏾‍💻 , Self-taught 📚 , Community and tech
-          enthusiast 🌎 💻.
+          Software Engineer 👨🏾‍💻 , Self-taught 📚 , Community and tech enthusiast
+          🌎 💻.
         </p>
-        <p className="sidebar-main-description">React, Typescript, GraphQL and OSS 🤩</p>
+        <p className="sidebar-main-description">
+          React, Typescript, GraphQL and OSS 🤩
+        </p>
         <NavBar tabs={routes} />
         <Social />
         <Footer />
