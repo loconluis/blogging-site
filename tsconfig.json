@@ -32,17 +32,3 @@
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
-
-// {
-//   "compilerOptions": {
-//     "baseUrl": ".",
-// "paths": {
-//   "@/components/*": ["app/components/*"],
-//   "@/Layout/*": ["app/Layout/*"],
-//   "@/context/*": ["app/context/*"],
-//   "@/lib/*": ["lib/*"],
-//   "@/styles/*": ["styles/*"],
-//   "@/*": ["app/*"]
-// }
-//   }
-// }
