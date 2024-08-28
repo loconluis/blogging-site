@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     function loadTheme() {
-      const current = localStorage.getItem("currentThemeSelected");
+      const current = localStorage.getItem("currentThemeSelected") || "light";
       document.documentElement.setAttribute("data-theme", current);
       setTheme(current);
     }

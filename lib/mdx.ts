@@ -20,6 +20,7 @@ export async function getFileBySlug(type, slug) {
 
   const { data, content } = matter(source);
   const mdxSource = await renderToString(content, {
+    // @ts-ignore
     components: MDXComponents,
   });
 
