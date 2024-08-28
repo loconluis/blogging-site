@@ -3,12 +3,9 @@ export default function About() {
     <>
       <h1 className="about-title">About me</h1>
       <p>
-        Hi, I'm <strong>Luis Locon</strong>, currently I'm working as a Software
-        Developer at{" "}
-        <a href="https://www.cognits.co/" target="_blank">
-          Cognits
-        </a>
-        , where I focus to Design and Develop solutions for our clients..
+        Hi, I'm <strong>Luis Locon</strong>, currently I'm working as a Sotware
+        Engineer where I focus to Design and Develop solutions for outstanding
+        projects..
       </p>
       <p>
         I always consider myself as a <strong>curious</strong> person, and that

@@ -1,10 +1,10 @@
 import Link from "next/link";
-import Image from 'next/image'
+import Image from "next/image";
 
 export default function Avatar({ size }) {
   return (
     <Link href="/">
-      <a id="avatar">
+      <div id="avatar">
         <Image
           width={size == "small" ? 50 : 75}
           height={size == "small" ? 50 : 75}
@@ -13,7 +13,7 @@ export default function Avatar({ size }) {
           layout="intrinsic"
           loading="eager"
         />
-      </a>
+      </div>
     </Link>
   );
 }
