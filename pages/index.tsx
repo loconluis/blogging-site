@@ -1,6 +1,7 @@
 import Head from "next/head";
-import MainPage from "@/MainPage";
+import MainPage from "@/app/MainPage";
 import { getAllFilesFrontMatter } from "@/lib/mdx";
+import Landing from "@/components/Landing";
 
 export default function Index({ posts }) {
   const _posts = sortPost(posts);
@@ -9,7 +10,8 @@ export default function Index({ posts }) {
       <Head>
         <title>Blog by Luis Locon</title>
       </Head>
-      <MainPage posts={_posts} />
+      <Landing />
+      {/* <MainPage posts={_posts} /> */}
     </>
   );
 }

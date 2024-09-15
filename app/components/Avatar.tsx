@@ -11,12 +11,12 @@ export default function Avatar({ size }: AvatarProps) {
       <div id="avatar">
         <Image
           alt="avatar"
-          width={size == "small" ? 50 : 75}
-          height={size == "small" ? 50 : 75}
+          width={size == "small" ? 50 : 175}
+          height={size == "small" ? 50 : 175}
           className="sidebar-main-avatar"
-          src="/images/me.png"
-          layout="intrinsic"
+          src="/images/me-3d.jpeg"
           loading="eager"
+          priority
         />
       </div>
     </Link>

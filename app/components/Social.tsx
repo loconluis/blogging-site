@@ -12,7 +12,7 @@ export default function Social({ info }: SocialProps) {
   return (
     <div className={info ? "sidebar-main-social__info" : "sidebar-main-social"}>
       <ul className="sidebar-main-social-list">
-        <li className="sidebar-main-social-list-item">
+        <li className="sidebar-main-social-list-item text-white">
           <a
             href="https://www.linkedin.com/in/loconluis/"
             target="_blank"
