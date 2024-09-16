@@ -7,7 +7,7 @@ export default function Index({ posts }) {
   return (
     <>
       <Head>
-        <title>Blog by Luis Locon</title>
+        <title>Home - Luis Locon</title>
       </Head>
       <Landing />
     </>
