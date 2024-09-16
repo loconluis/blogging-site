@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -13,6 +14,10 @@ module.exports = {
     fontFamily: {
       body: ['"IBM Plex Mono"'],
     },
+    // screens: {
+    //   xs: "300px",
+    //   ...defaultTheme,
+    // },
     extend: {
       borderRadius: {
         lg: "var(--radius)",

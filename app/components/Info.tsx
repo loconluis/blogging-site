@@ -4,10 +4,10 @@ import { parseISO, format } from "date-fns";
 
 export default function Info({ frontMatter }) {
   return (
-    <div className="blog-header">
+    <div className="mt-10">
       <h1 className="blog-title">{frontMatter.title}</h1>
       <div className="blog-info">
-        <div className="blog-info-data">
+        <div className="blog-info-data mt-5">
           <Avatar size={"small"} />
           <p className="blog-info-data-author">{frontMatter.author}</p>
           <p className="blog-info-data-date">

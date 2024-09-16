@@ -15,8 +15,6 @@
   --white: #ffffff;
   --super-ligh-gray: #faf8ee;
 
-  /* breakpoints */
-
   /* Fonts Size */
   --font-size-large: 1.8rem;
   --font-size-medium: 1.4rem;
@@ -32,18 +30,6 @@
 /* Global Settings */
 * {
   box-sizing: border-box;
-}
-
-body {
-  margin: 0 0 0 calc(100vw - 100%);
-  color: var(--dark-grey);
-  /* font-family: Helvetica, Arial, sans-serif; */
-  font-optical-sizing: auto;
-  font-size: var(--font-size-small);
-  font-style: normal;
-  line-height: var(--line-height);
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
 }
 h1,
 h2,
@@ -67,22 +53,6 @@ a:hover {
 p {
   line-height: var(--line-height);
   margin-bottom: var(--line-height);
-}
-
-.container {
-  max-width: 67rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-.container::after {
-  /* content: ""; */
-  display: table;
-  clear: both;
-}
-.container::before {
-  /* content: "" */
-  display: table;
-  clear: both;
 }
 
 .sidebar {
@@ -151,7 +121,7 @@ p {
 .sidebar-main-social__info a {
   border: 0;
   display: flex;
-  color: var(--dark-grey);
+  color: white;
 }
 
 .sidebar-main-social__info a:hover {
@@ -608,7 +578,6 @@ pre {
 }
 
 @layer base {
-  @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
   * {
     @apply border-border;
   }
@@ -618,6 +587,5 @@ pre {
   }
   body {
     @apply bg-background text-foreground;
-    background: rgb(30 41 59 / var(--tw-bg-opacity));
   }
 }

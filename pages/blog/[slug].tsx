@@ -1,4 +1,3 @@
-// import hydrate from "next-mdx-remote/hydrate";
 import { MDXRemote } from "next-mdx-remote";
 import { getFiles, getFileBySlug } from "@/lib/mdx";
 import Head from "next/head";
@@ -6,19 +5,16 @@ import BlogLayout from "@/Layout/Blog";
 import MDXComponents from "@/components/MDXComponents";
 
 export default function BlogPage({ mdxSource, frontMatter }) {
-  // const content = hydrate(mdxSource, {
-  //   // @ts-ignore
-  //   components: MDXComponents,
-  // });
-
   return (
     <>
       <Head>
         <title>{frontMatter.title} - Blog by Luis Locon</title>
       </Head>
-      {/* <BlogLayout frontMatter={frontMatter}>{content}</BlogLayout> */}
-      <BlogLayout frontMatter={frontMatter}>
-        {<MDXRemote components={MDXComponents} {...mdxSource} />}
+      <BlogLayout
+        navigation={{ link: "/blog", text: "Back to Entries" }}
+        frontMatter={frontMatter}
+      >
+        <MDXRemote components={MDXComponents} {...mdxSource} />
       </BlogLayout>
     </>
   );

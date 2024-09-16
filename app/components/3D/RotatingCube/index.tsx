@@ -24,10 +24,11 @@ function RotatingCube() {
         ref={meshRef}
       >
         <meshStandardMaterial
-          color="#4a00e0"
-          metalness={0.9}
-          roughness={0.1}
-          envMapIntensity={1}
+          // color="#4a00e0"
+          color="#de1d8d"
+          metalness={1}
+          roughness={0}
+          envMapIntensity={0.9}
         />
       </RoundedBox>
     </>

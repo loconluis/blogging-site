@@ -1,18 +1,26 @@
-import {
-  FaLinkedinIn,
-  FaGithub,
-  FaTwitter,
-  FaRegFileAlt,
-} from "react-icons/fa";
+import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { RiTwitterXFill } from "react-icons/ri";
+import { motion } from "framer-motion";
+
 interface SocialProps {
   info?: boolean;
 }
 
 export default function Social({ info }: SocialProps) {
   return (
-    <div className={info ? "sidebar-main-social__info" : "sidebar-main-social"}>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={info ? "sidebar-main-social__info" : "sidebar-main-social"}
+    >
       <ul className="sidebar-main-social-list">
-        <li className="sidebar-main-social-list-item text-white">
+        <motion.li
+          className="sidebar-main-social-list-item text-white"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+        >
           <a
             href="https://www.linkedin.com/in/loconluis/"
             target="_blank"
@@ -20,8 +28,13 @@ export default function Social({ info }: SocialProps) {
           >
             <FaLinkedinIn />
           </a>
-        </li>
-        <li className="sidebar-main-social-list-item">
+        </motion.li>
+        <motion.li
+          className="sidebar-main-social-list-item text-white"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+        >
           <a
             href="https://github.com/loconluis/"
             target="_blank"
@@ -29,13 +42,18 @@ export default function Social({ info }: SocialProps) {
           >
             <FaGithub />
           </a>
-        </li>
-        <li className="sidebar-main-social-list-item" aria-label="Twitter">
-          <a href="https://twitter.com/LoconLuis" target="_blank">
-            <FaTwitter />
+        </motion.li>
+        <motion.li
+          className="sidebar-main-social-list-item text-white"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+        >
+          <a href="https://x.com/LoconLuis" target="_blank">
+            <RiTwitterXFill />
           </a>
-        </li>
+        </motion.li>
       </ul>
-    </div>
+    </motion.div>
   );
 }
