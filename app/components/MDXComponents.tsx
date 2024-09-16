@@ -5,9 +5,7 @@ const HeadLine1 = (props) => {
 };
 
 const MDXComponents = {
-  h1: (props) => {
-    return <h1>{props.children}</h1>;
-  },
+  h1: HeadLine1,
   h2: (props) => <h2>{props.children}</h2>,
   h3: (props) => <h3>{props.children}</h3>,
   h4: (props) => <h4>{props.children}</h4>,
@@ -17,12 +15,15 @@ const MDXComponents = {
   code: CodeBlock,
   br: (props) => <br />,
   // hr: Hr,
-  a: (props) => <a href={props.href} target="_blank" className="mdx-anchor">{props.children}</a>,
+  a: (props) => (
+    <a href={props.href} target="_blank" className="mdx-anchor">
+      {props.children}
+    </a>
+  ),
   p: (props) => <p>{props.children}</p>,
   ul: (props) => <ul {...props} className="mdx-list-ul"></ul>,
   ol: (props) => <ol className="mdx-list-ol">{props.children}</ol>,
-  li: (props) => <li className="mdx-list-item">{props.children}</li>
+  li: (props) => <li className="mdx-list-item">{props.children}</li>,
 };
 
-// export { CustomLink };
 export default MDXComponents;

@@ -1,15 +1,15 @@
 import Head from "next/head";
+import BlogPage from "@/components/BlogList";
 import { getAllFilesFrontMatter } from "@/lib/mdx";
-import Landing from "@/components/Landing";
 
-export default function Index({ posts }) {
+export default function Blog({ posts }) {
   const _posts = sortPost(posts);
   return (
     <>
       <Head>
-        <title>Blog by Luis Locon</title>
+        <title>Blog - Posts - Blog by Luis Locon</title>
       </Head>
-      <Landing />
+      <BlogPage posts={posts} />
     </>
   );
 }

@@ -1,30 +1,54 @@
+import { motion } from "framer-motion";
 import Link from "next/link";
-export default function About() {
+import Avatar from "@/components/Avatar";
+import Layout from "@/Layout/Index";
+
+const About = () => {
   return (
-    <>
-      <h1 className="about-title">About me</h1>
-      <p>
-        Hi, I'm <strong>Luis Locon</strong> currently I working as a Software
-        Engineer where I have been part of many develop teams for Top Notch
-        companies, most of the time working with <strong>Typescript</strong>,{" "}
-        <strong>React</strong>, and <strong>Graphql</strong>.
-      </p>
-      <p>
-        I like the challenge of being an Engineer, I'm fascinated with solving
-        complex problems. But also I'm a very enthusiast of the Product since
-        their creation to the moment is a reality for the customers.
-      </p>
-      <p>
-        When I'm not coding I enjoy spending time with family and friends, I
-        like to read, play video games, travel, and have fun with my little dog.
-      </p>
-      <p>
-        It's hard to describe who I think I am, so it's all up to you. If you
-        want to know more about me or my work.{" "}
-        <Link href="/contact">
-          <p>Contact me.</p>
-        </Link>
-      </p>
-    </>
+    <Layout
+      title="About Me"
+      navigation={{ text: "Back Home", link: "/" }}
+      leftComponentInTitle={<Avatar size="medium" />}
+      showFooterSocial
+    >
+      <motion.div
+        className="flex flex-col gap-10 lineHeight:1.5 xs:mt-10"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <p>
+          Hi! I'm Luis Locon 👋🏼, a software engineer with a passion for frontend
+          development and everything related to creating amazing interfaces. I
+          started my career as a full stack developer six years ago, where I
+          developed a deep love for JavaScript and the web. Since then, I've
+          realized that what I enjoy the most is designing user experiences that
+          are attractive, efficient, and most importantly, easy to use.
+        </p>
+        <p>
+          I'm from Guatemala 🇬🇹, but the web has led me to collaborate with
+          amazing teams around the world, from the USA to Mexico, India, and
+          several places across Central America, working at top companies that
+          have a high global impact. I'm passionate about design, product
+          creation, and I've recently dived into the exciting world of Web3.
+        </p>
+        <p>
+          I love tackling complex challenges and solving problems in creative
+          ways. I'm always open to sharing knowledge, teaching, and building
+          communities wherever I go.
+        </p>
+        <p>
+          When I'm not coding, you'll probably find me watching or playing
+          sports (yes, I'm a big fan), enjoying good food (even though I'm not
+          an expert foodie, I like to think I am), or playing with my dog, who
+          never fails to make me smile.{" "}
+          <Link href="#social">
+            <span>Contact me. ⬇️</span>
+          </Link>
+        </p>
+      </motion.div>
+    </Layout>
   );
-}
+};
+
+export default About;
