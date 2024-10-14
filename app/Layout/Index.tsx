@@ -9,7 +9,10 @@ interface ILayoutProps {
 
 export default function Layout({ children }: ILayoutProps) {
   return (
-    <div className="h-screen w-full flex flex-col items-center bg-slate-950 overflow-auto p-8">
+    <div
+      id="main-blog-container"
+      className="h-screen w-full flex flex-col items-center bg-slate-950 overflow-auto p-8"
+    >
       <Header />
       <div className="container text-slate-50 mx-auto md:max-w-4xl xs:max-w-80 mx-auto-xs flex-grow overflow-auto">
         {children}
