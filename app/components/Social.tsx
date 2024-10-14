@@ -22,11 +22,11 @@ export default function Social({ info }: SocialProps) {
           transition={{ delay: 0.2, duration: 0.8 }}
         >
           <a
-            href="https://www.linkedin.com/in/loconluis/"
+            href="https://x.com/LoconLuis"
             target="_blank"
-            aria-label="LinkedIn"
+            aria-label="X Profile (formely Twitter) of Luis Locon"
           >
-            <FaLinkedinIn />
+            <RiTwitterXFill />
           </a>
         </motion.li>
         <motion.li
@@ -38,7 +38,7 @@ export default function Social({ info }: SocialProps) {
           <a
             href="https://github.com/loconluis/"
             target="_blank"
-            aria-label="Github"
+            aria-label="Github Profile of Luis Locon"
           >
             <FaGithub />
           </a>
@@ -49,8 +49,12 @@ export default function Social({ info }: SocialProps) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          <a href="https://x.com/LoconLuis" target="_blank">
-            <RiTwitterXFill />
+          <a
+            href="https://www.linkedin.com/in/loconluis/"
+            target="_blank"
+            aria-label="LinkedIn Profile of Luis Locon"
+          >
+            <FaLinkedinIn />
           </a>
         </motion.li>
       </ul>

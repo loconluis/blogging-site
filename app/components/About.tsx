@@ -2,15 +2,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Avatar from "@/components/Avatar";
 import Layout from "@/Layout/Index";
+import VerticalTimeline from "./VerticalTimeline";
 
 const About = () => {
   return (
-    <Layout
-      title="About Me"
-      navigation={{ text: "Back Home", link: "/" }}
-      leftComponentInTitle={<Avatar size="medium" />}
-      showFooterSocial
-    >
+    <Layout>
       <motion.div
         className="flex flex-col gap-10 lineHeight:1.5 xs:mt-10"
         initial={{ opacity: 0, y: 20 }}
@@ -40,13 +36,11 @@ const About = () => {
         <p>
           When I'm not coding, you'll probably find me watching or playing
           sports (yes, I'm a big fan), enjoying good food (even though I'm not
-          an expert foodie, I like to think I am), or playing with my dog, who
-          never fails to make me smile.{" "}
-          <Link href="#social">
-            <span>Contact me. ⬇️</span>
-          </Link>
+          an expert foodie, I like to think I am), or playing with my dog.
         </p>
+        <p>Take a look at my work experience below. ⬇️</p>
       </motion.div>
+      <VerticalTimeline />
     </Layout>
   );
 };

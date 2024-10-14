@@ -1,0 +1,20 @@
+---
+title: "Tracking the Dollar Exchange Rate: A Personal Project "
+publishedAt: "2024-09-13"
+description: "I recently finished a project I had been planning for a while: tracking the price of the dollar over a 30-day period."
+author: "Luis Locon"
+---
+
+I recently finished a project I had been planning for a while: tracking the price of the dollar over a 30-day period. The idea came to me after browsing [DolarHoy](https://dolarhoy.com/), a site that monitors various exchange rates in Argentina. I liked how they presented the information clearly and accessibly, and it inspired me to build something similar for Guatemala, with a few customized features.
+
+The site I built uses data from the Central Bank of Guatemala to display the dollar exchange rate history for the past 30 days. One of the main features is an interactive graph that shows how the exchange rate has fluctuated throughout the month. I also added a calculator so users can easily convert between quetzales and dollars, letting them know how many quetzales equal a dollar and vice versa.
+
+![Captura de pantalla del proyecto Dolar GT](/images/dolar-hoy.png)
+
+Although the site is fully functional, I have plans to expand it further. One of the things I’d like to implement is tracking the dollar price across various financial platforms, not just the central bank but also commercial banks, cooperatives, and even crypto platforms. This would provide a more comprehensive view for people who need to know different dollar rates based on where or how they want to exchange money.
+
+On the technical side, I faced some interesting challenges. One of the biggest was collecting data, as the central bank’s API uses a SOAP format. I had to transform that data into JSON to handle it more efficiently in the frontend. Finding the specific information I needed was tricky, but it was satisfying to overcome that hurdle and get everything working as expected.
+
+Para aquellos interesados en el stack técnico, utilicé Next.js, React y Tailwind CSS para este proyecto. Estas herramientas me permitieron desarrollar una aplicación rápida y eficiente.
+
+If you’re curious and want to check it out, you can see it in action here: [https://dolar.luislocon.dev](https://dolar.luislocon.dev).

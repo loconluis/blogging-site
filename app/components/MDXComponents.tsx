@@ -1,4 +1,5 @@
 import CodeBlock from "./CodeBlock";
+import Image from "next/image";
 
 const HeadLine1 = (props) => {
   return <h1>{props}</h1>;
@@ -12,9 +13,11 @@ const MDXComponents = {
   h5: (props) => <h5>{props.children}</h5>,
   h6: (props) => <h6>{props.children}</h6>,
   inlineCode: (props) => <CodeBlock {...props} />,
+  img: (props) => (
+    <Image className="w-full h-auto" width={600} height={400} {...props} />
+  ),
   code: CodeBlock,
   br: (props) => <br />,
-  // hr: Hr,
   a: (props) => (
     <a href={props.href} target="_blank" className="mdx-anchor">
       {props.children}
