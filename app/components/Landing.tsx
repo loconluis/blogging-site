@@ -3,9 +3,7 @@
 import Avatar from "@/components/Avatar";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import RotatingCube from "@/components/3D/RotatingCube";
 import Social from "./Social";
-import { Suspense } from "react";
 
 const LandingPage = () => {
   const navItems = [
@@ -20,9 +18,6 @@ const LandingPage = () => {
 
   return (
     <div className="h-screen w-full flex flex-col items-center justify-between py-8 bg-slate-950 font-body">
-      <Suspense fallback={<div>Loading...</div>}>
-        {/* <RotatingCube /> */}
-      </Suspense>
       <div className="flex-1 flex flex-col items-center justify-center z-10">
         <Avatar />
         <motion.h1
