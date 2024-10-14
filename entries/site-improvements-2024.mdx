@@ -1,0 +1,133 @@
+---
+title: "Website Improvements 2024"
+publishedAt: "2024-03-20"
+description: "Summary of the optimizations and improvements made to the personal website"
+author: "Luis Locon"
+---
+
+Before anything else, I made a slight change to the look of the page. I went with a darker color scheme with white and fuchsia tones. The design changed a bit, and I added some animations, but here are the main improvements:
+
+## 1. Optimizing the Layout Component
+
+I tweaked the Layout component to make it more flexible and efficient:
+
+```tsx
+export default function Layout({ children, showFooterSocial }: ILayoutProps) {
+  return (
+    <div className="min-h-screen flex flex-col bg-slate-950">
+      <Header />
+      <main className="flex-grow container mx-auto text-slate-50 md:max-w-4xl xs:max-w-80 p-8">
+        {children}
+      </main>
+      {showFooterSocial && (
+        <footer className="mt-auto">
+          <Social />
+        </footer>
+      )}
+      <Navbar />
+    </div>
+  );
+}
+```
+
+This change ensures the main content takes up all available space, and the footer stays at the bottom.
+
+## 2. Image Optimization
+
+I updated the Avatar component to use more image optimization options from Next.js:
+
+```tsx
+<Image
+  alt="avatar"
+  width={sizeImg}
+  height={sizeImg}
+  className="sidebar-main-avatar"
+  src={img || "/images/Designer-6.png"}
+  loading="eager"
+  priority
+  quality={90}
+  placeholder="blur"
+  blurDataURL="/images/placeholder.jpg"
+/>
+```
+
+## 3. Implemented Lazy Loading
+
+I added lazy loading for blog posts on the homepage to improve initial performance:
+
+```tsx
+import dynamic from "next/dynamic";
+const DynamicBlogPage = dynamic(() => import("@/components/BlogList"), {
+  loading: () => <p>Cargando posts...</p>,
+});
+export default function Index({ posts }) {
+  const posts = sortPost(posts);
+  return (
+    <>
+      <Head>
+        <title>Home - Luis Locon</title>
+      </Head>
+      <DynamicBlogPage posts={posts} />
+    </>
+  );
+}
+```
+
+## 4. Accessibility Improvements
+
+I made the Social component more accessible by adding aria-labels to the links:
+
+```tsx
+<a
+  href="https://www.linkedin.com/in/loconluis/"
+  target="blank"
+  rel="noopener noreferrer"
+  aria-label="Perfil de LinkedIn de Luis Locon"
+>
+  {/*----Icon----*/}
+</a>
+```
+
+## 6. SEO Optimization
+
+I expanded the SEO setup to include more metadata:
+
+```js
+const SEO = {
+  title,
+  description,
+  canonical: URI,
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: URI,
+    title,
+    description,
+    images: [
+      {
+        url: `${URI}/og.png`,
+        alt: title,
+        width: 1280,
+        height: 720,
+      },
+      {
+        url: `${URI}/og-2.png`,
+        alt: title,
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  twitter: {
+    handle: "@loconluis",
+    site: "@loconluis",
+    cardType: "summary_large_image",
+  },
+  additionalMetaTags: [
+    {
+      name: "keywords",
+      content: "desarrollo web, programación, React, Next.js, JavaScript",
+    },
+  ],
+};
+```

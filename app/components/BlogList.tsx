@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Social from "@/components/Social";
 import { parseISO, format } from "date-fns";
 import Layout from "@/Layout/Index";
 
@@ -10,59 +9,44 @@ interface IBlogList {
 
 const BlogList = (props: IBlogList) => {
   return (
-    <Layout
-      title="Entries List"
-      navigation={{
-        link: "/",
-        text: "Back Home",
-      }}
-      leftComponentInTitle={<Social />}
-    >
+    <Layout>
       <motion.div
-        className="flex flex-col gap-10 lineHeight:1.5 overflow-auto"
+        className="flex flex-col h-auto overflow-auto scroll-p-0"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <table className="table-auto">
-          <thead>
-            <tr>
-              <th className="text-left">Year</th>
-              <th className="text-left pl-5">Title</th>
-            </tr>
-          </thead>
-          <tbody>
-            {props.posts.map((post, index) => (
-              <tr key={index}>
-                <td className="w-5">
-                  <span className="py-15">
-                    {format(parseISO(post.publishedAt), "yyyy")}
-                  </span>
-                </td>
-                <td>
-                  <Link href={`/blog/${post.slug}`}>
-                    <motion.span
-                      whileHover={"hover"}
-                      variants={{
-                        hover: {
-                          backgroundColor: "#de1d8d",
-                          scale: 1.06,
-                          transition: {
-                            duration: 0.5,
-                            ease: "easeOut",
-                          },
-                        },
-                      }}
-                      className="py-15 ml-5 mb-10 text-lg/2 md:text-xl text-center break-normal	text-slate-50 hover:underline"
-                    >
-                      {post.title}
-                    </motion.span>
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="flex flex-row border-b border-slate-500 pb-3">
+          <span className="font-bold w-16">Date</span>
+          <span className="font-bold flex-grow">Title</span>
+        </div>
+        {props.posts.map((post, index) => (
+          <Link key={index} href={`/blog/${post.slug}`}>
+            <motion.div
+              className="flex flex-row border-b border-slate-500 py-4"
+              whileHover={"hover"}
+              whileTap={{ scale: 0.95 }}
+              variants={{
+                hover: {
+                  backgroundColor: "#de1d8d",
+                  scale: 1,
+                  color: "#fff",
+                  transition: {
+                    duration: 0.5,
+                    ease: "easeOut",
+                  },
+                },
+              }}
+            >
+              <span className=" w-16 shrink-0 text-white">
+                {format(parseISO(post.publishedAt), "yyyy")}
+              </span>
+              <span className="flex-grow break-before-all break-words text-white">
+                {post.title}
+              </span>
+            </motion.div>
+          </Link>
+        ))}
       </motion.div>
     </Layout>
   );

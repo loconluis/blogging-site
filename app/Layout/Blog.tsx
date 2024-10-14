@@ -1,4 +1,5 @@
 import Info from "@/components/Info";
+import ScrollToTop from "@/components/ScrollToTop";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -18,7 +19,10 @@ export default function Blog({
   frontMatter,
 }: ILayoutProps) {
   return (
-    <div className="h-screen w-full flex flex-col items-center bg-slate-950 overflow-auto">
+    <div
+      id="main-blog-container"
+      className="h-screen w-full flex flex-col items-center bg-slate-950 overflow-auto"
+    >
       <div className="container text-slate-50 max-w-xs m-auto md:max-w-2xl">
         <div className="mt-10">
           <Link href={navigation?.link || "/"}>{navigation?.text}</Link>
@@ -33,6 +37,7 @@ export default function Blog({
           {children}
         </motion.div>
       </div>
+      <ScrollToTop />
     </div>
   );
 }
