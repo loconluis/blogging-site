@@ -1,6 +1,14 @@
 import Head from "next/head";
 import { getAllFilesFrontMatter } from "@/lib/mdx";
-import Landing from "@/components/Landing";
+import dynamic from "next/dynamic";
+
+const DynamicBlogPage = dynamic(() => import("@/components/BlogList"), {
+  loading: () => (
+    <div className="h-screen w-full bg-slate-950 flex justify-center items-center">
+      <p className="text-white">Loading posts...</p>,
+    </div>
+  ),
+});
 
 export default function Index({ posts }) {
   const _posts = sortPost(posts);
@@ -9,7 +17,7 @@ export default function Index({ posts }) {
       <Head>
         <title>Home - Luis Locon</title>
       </Head>
-      <Landing />
+      <DynamicBlogPage posts={posts} />
     </>
   );
 }

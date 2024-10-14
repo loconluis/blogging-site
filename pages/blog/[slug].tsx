@@ -11,7 +11,7 @@ export default function BlogPage({ mdxSource, frontMatter }) {
         <title>{frontMatter.title} - Blog by Luis Locon</title>
       </Head>
       <BlogLayout
-        navigation={{ link: "/blog", text: "Back to Entries" }}
+        navigation={{ link: "/", text: "Back to Entries" }}
         frontMatter={frontMatter}
       >
         <MDXRemote components={MDXComponents} {...mdxSource} />

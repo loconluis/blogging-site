@@ -31,9 +31,12 @@ export default function Avatar({ size, img }: AvatarProps) {
           width={sizeImg}
           height={sizeImg}
           className="sidebar-main-avatar"
-          src={img || "/images/Designer-6.png"}
+          src={img || "/images/profile.jpg"}
           loading="eager"
           priority
+          quality={90}
+          placeholder="blur"
+          blurDataURL="/images/placeholder.jpg"
         />
       </motion.div>
     </Link>
