@@ -5,12 +5,7 @@ import Layout from "@/Layout/Index";
 
 const About = () => {
   return (
-    <Layout
-      title="About Me"
-      navigation={{ text: "Back Home", link: "/" }}
-      leftComponentInTitle={<Avatar size="medium" />}
-      showFooterSocial
-    >
+    <Layout>
       <motion.div
         className="flex flex-col gap-10 lineHeight:1.5 xs:mt-10"
         initial={{ opacity: 0, y: 20 }}

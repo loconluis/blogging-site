@@ -32,7 +32,6 @@ const Navbar = () => {
             variants={{
               hover: {
                 backgroundColor: "#de1d8d",
-                textColor: "white",
                 scale: 1.06,
                 transition: {
                   duration: 0.5,
