@@ -1,6 +1,6 @@
 {
   "name": "loconluis-bloggin",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Blog and personal site",
   "main": "index.js",
   "author": "Luis Locon <luis.locon@gmail.com>",
