@@ -3,8 +3,9 @@ import { getFiles, getFileBySlug } from "@/lib/mdx";
 import Head from "next/head";
 import BlogLayout from "@/Layout/Blog";
 import MDXComponents from "@/components/MDXComponents";
+import { getViews } from "@/lib/views";
 
-export default function BlogPage({ mdxSource, frontMatter }) {
+export default function BlogPage({ mdxSource, frontMatter, views }) {
   return (
     <>
       <Head>
@@ -13,6 +14,7 @@ export default function BlogPage({ mdxSource, frontMatter }) {
       <BlogLayout
         navigation={{ link: "/", text: "Back to Entries" }}
         frontMatter={frontMatter}
+        views={views}
       >
         <MDXRemote components={MDXComponents} {...mdxSource} />
       </BlogLayout>
@@ -35,5 +37,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = await getFileBySlug("/", params.slug);
-  return { props: post };
+  // const views = await getViews(params.slug);
+  // console.log("> inside getStaticProps", views);
+  return { props: { ...post } };
 }

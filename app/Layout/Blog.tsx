@@ -1,9 +1,11 @@
 import Info from "@/components/Info";
 import ScrollToTop from "@/components/ScrollToTop";
+import Social from "@/components/Social";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 interface ILayoutProps {
+  views?: number;
   navigation?: {
     text: string;
     link: string;
@@ -17,6 +19,7 @@ export default function Blog({
   children,
   navigation,
   frontMatter,
+  views,
 }: ILayoutProps) {
   return (
     <div
@@ -27,7 +30,7 @@ export default function Blog({
         <div className="mt-10">
           <Link href={navigation?.link || "/"}>{navigation?.text}</Link>
         </div>
-        <Info frontMatter={frontMatter} />
+        <Info frontMatter={frontMatter} views={views} />
         <motion.div
           className="flex flex-col gap-10 lineHeight:1.5 my-10"
           initial={{ opacity: 0, y: 20 }}
@@ -36,6 +39,9 @@ export default function Blog({
         >
           {children}
         </motion.div>
+      </div>
+      <div className="mb-10">
+        <Social />
       </div>
       <ScrollToTop />
     </div>
