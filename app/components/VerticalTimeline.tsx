@@ -4,14 +4,14 @@ export default function MinimalVerticalTimeline() {
   const experiences = [
     {
       year: "Jan 2025 - Present",
-      company: "Cognits",
+      company: "Cognits, S.A.",
       position: "Senior Engineer",
-      description: ``,
+      description: `Doing cool stuffs with AI`,
     },
     {
       year: "Nov 2024 - Jan 2025",
-      company: "Cognits",
-      position: "Senior Frontend Developer",
+      company: "Cognits, S.A",
+      position: "Senior Frontend Developer Freelance",
       description: `I was part of the team responsible for developing the complete website for an international payments company. The site was designed to be self-managing, built based on programmatic conditions handled through a CMS. For this project, we utilized Astro in combination with Sanity, which allowed us to create a flexible and scalable platform tailored to the client's needs.`,
     },
     {
