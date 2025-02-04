@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import Info from "@/components/Info";
 import ScrollToTop from "@/components/ScrollToTop";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { getViews } from "@/lib/getViews";
 
 interface ILayoutProps {
   navigation?: {
@@ -18,6 +20,17 @@ export default function Blog({
   navigation,
   frontMatter,
 }: ILayoutProps) {
+  const [views, setViews] = useState(0);
+
+  const _getViews = async () => {
+    const res = await getViews(frontMatter.slug);
+    setViews(res.views);
+  };
+
+  useEffect(() => {
+    _getViews();
+  }, []);
+
   return (
     <div
       id="main-blog-container"
@@ -27,7 +40,7 @@ export default function Blog({
         <div className="mt-10">
           <Link href={navigation?.link || "/"}>{navigation?.text}</Link>
         </div>
-        <Info frontMatter={frontMatter} />
+        <Info frontMatter={frontMatter} views={views} />
         <motion.div
           className="flex flex-col gap-10 lineHeight:1.5 my-10"
           initial={{ opacity: 0, y: 20 }}

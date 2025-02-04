@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { parseISO, format } from "date-fns";
 import Layout from "@/Layout/Index";
+import BlogRow from "@/components/BlogListRow";
 
 interface IBlogList {
   posts: any[];
@@ -19,34 +18,11 @@ const BlogList = (props: IBlogList) => {
         <div className="flex flex-row border-b border-slate-500 pb-3">
           <span className="font-bold w-16">Date</span>
           <span className="font-bold flex-grow">Title</span>
+          <span className="font-bold">Views</span>
         </div>
-        {props.posts.map((post, index) => (
-          <Link key={index} href={`/blog/${post.slug}`}>
-            <motion.div
-              className="flex flex-row border-b border-slate-500 py-4"
-              whileHover={"hover"}
-              whileTap={{ scale: 0.95 }}
-              variants={{
-                hover: {
-                  backgroundColor: "#de1d8d",
-                  scale: 1,
-                  color: "#fff",
-                  transition: {
-                    duration: 0.5,
-                    ease: "easeOut",
-                  },
-                },
-              }}
-            >
-              <span className=" w-16 shrink-0 text-white">
-                {format(parseISO(post.publishedAt), "yyyy")}
-              </span>
-              <span className="flex-grow break-before-all break-words text-white">
-                {post.title}
-              </span>
-            </motion.div>
-          </Link>
-        ))}
+        {props.posts.map((post, index) => {
+          return <BlogRow key={index} post={post} />;
+        })}
       </motion.div>
     </Layout>
   );

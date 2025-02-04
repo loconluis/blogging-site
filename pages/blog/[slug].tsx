@@ -35,5 +35,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = await getFileBySlug("/", params.slug);
+  // const views = await fetch(`/api/view?id=${params.slug}&increment=`);
+  // console.log("views inside slug", views);
   return { props: post };
 }
