@@ -5,7 +5,7 @@ export default function MinimalVerticalTimeline() {
     {
       year: "Jan 2025 - Present",
       company: "Cognits, S.A.",
-      position: "Senior Engineer",
+      position: "Senior Software Engineer",
       description: `Doing cool stuffs with AI`,
     },
     {
