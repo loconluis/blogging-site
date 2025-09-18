@@ -2,7 +2,7 @@ import CodeBlock from "./CodeBlock";
 import Image from "next/image";
 
 const HeadLine1 = (props) => {
-  return <h1>{props}</h1>;
+  return <h1>{props.children}</h1>;
 };
 
 const MDXComponents = {
@@ -19,7 +19,7 @@ const MDXComponents = {
   code: CodeBlock,
   br: (props) => <br />,
   a: (props) => (
-    <a href={props.href} target="_blank" className="mdx-anchor">
+    <a href={props.href} target="_blank" className="text-blue-600 ">
       {props.children}
     </a>
   ),

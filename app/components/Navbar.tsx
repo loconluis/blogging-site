@@ -9,7 +9,6 @@ const Navbar = () => {
   const navItems = [
     { name: "About", href: "/about" },
     { name: "Blog", href: "/" },
-    // { name: "Portfolio", href: "/portfolio" },
     { name: "Work Experience", href: "/work-experience" },
     {
       name: "Source",
@@ -45,8 +44,8 @@ const Navbar = () => {
             >
               <Link
                 className={`relative flex flex-col items-center justify-center px-2 py-2 rounded-lg text-xs font-medium ${pathname === item.href
-                    ? "text-neutral-900 dark:text-neutral-50 bg-neutral-100 dark:bg-neutral-800"
-                    : "text-neutral-600 dark:text-neutral-400"
+                  ? "text-neutral-900 dark:text-neutral-50 bg-neutral-100 dark:bg-neutral-800"
+                  : "text-neutral-600 dark:text-neutral-400"
                   } hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors`}
                 href={item.href}
                 target={item.target || ""}
@@ -78,22 +77,12 @@ const Navbar = () => {
               className="px-4 py-2 rounded-lg"
               whileHover={"hover"}
               whileTap={{ scale: 0.95 }}
-              variants={{
-                hover: {
-                  backgroundColor: "neutral",
-                  scale: 1.02,
-                  transition: {
-                    duration: 0.2,
-                    ease: "easeOut",
-                  },
-                },
-              }}
             >
               <Link
                 className={`relative text-base font-medium  ${pathname === item.href
-                    ? "underline decoration-neutral-600 px-2 text-neutral-900 dark:text-neutral-50"
-                    : "text-neutral-600 dark:text-neutral-400"
-                  } hover:text-neutral-900 dark:hover:text-neutral-50`}
+                  ? "underline decoration-blue-600 px-2 text-neutral-900 dark:text-neutral-50"
+                  : "text-neutral-600 dark:text-neutral-400"
+                  } hover:bg-blue-700 hover:text-white dark:hover:bg-blue-700 dark:hover:text-white transition-colors`}
                 href={item.href}
                 target={item.target || ""}
               >

@@ -25,32 +25,24 @@ const BlogListRow = ({ post }: Props) => {
   }, [post]);
 
   return (
-    <Link href={`/blog/${post.slug}`}>
+    <Link href={`/blog/${post.slug}`} className="hover:underline hover:decoration-blue-700">
       <motion.div
         className="flex flex-row border-b border-neutral-200 dark:border-neutral-800 py-4 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
         whileHover={"hover"}
         whileTap={{ scale: 0.95 }}
-        variants={{
-          hover: {
-            backgroundColor: "neutral",
-            scale: 1,
-            transition: {
-              duration: 0.2,
-              ease: "easeOut",
-            },
-          },
-        }}
+
       >
-        <span className=" w-16 shrink-0 text-neutral-600 dark:text-neutral-400">
+        <span className=" w-16 shrink-0 text-neutral-600 dark:text-neutral-400 hover:underline hover:decoration-blue-700">
           {format(parseISO(post.publishedAt), "yyyy")}
         </span>
-        <span className="flex-grow break-before-all break-words text-neutral-900 dark:text-neutral-50">
+        <span className="flex-grow break-before-all break-words text-neutral-900 dark:text-neutral-50 hover:underline hover:decoration-blue-700 ">
           {post.title}
         </span>
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          className="hover:no-underline text-blue-700"
         >
           {views}
         </motion.span>

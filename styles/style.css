@@ -608,22 +608,40 @@ pre {
   }
 
   /* Better blog text readability */
-  .prose, .prose * {
+  .prose,
+  .prose * {
     color: #374151 !important;
   }
 
-  .dark .prose, .dark .prose * {
+  .dark .prose,
+  .dark .prose * {
     color: #d1d5db !important;
   }
 
   /* Ensure blog content has proper text contrast */
-  .blog-content, .blog-content p, .blog-content h1, .blog-content h2, .blog-content h3,
-  .blog-content h4, .blog-content h5, .blog-content h6, .blog-content li, .blog-content blockquote {
+  .blog-content,
+  .blog-content p,
+  .blog-content h1,
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4,
+  .blog-content h5,
+  .blog-content h6,
+  .blog-content li,
+  .blog-content blockquote {
     color: #111827 !important;
   }
 
-  .dark .blog-content, .dark .blog-content p, .dark .blog-content h1, .dark .blog-content h2, .dark .blog-content h3,
-  .dark .blog-content h4, .dark .blog-content h5, .dark .blog-content h6, .dark .blog-content li, .dark .blog-content blockquote {
+  .dark .blog-content,
+  .dark .blog-content p,
+  .dark .blog-content h1,
+  .dark .blog-content h2,
+  .dark .blog-content h3,
+  .dark .blog-content h4,
+  .dark .blog-content h5,
+  .dark .blog-content h6,
+  .dark .blog-content li,
+  .dark .blog-content blockquote {
     color: #f9fafb !important;
   }
 }

@@ -1,0 +1,174 @@
+---
+title: "My First AI Agent"
+publishedAt: "2025-09-12"
+description: "My first AI agent"
+author: "Luis Locon"
+---
+
+
+# 📖 Bible Chatbot using FastAPI, ChromaDB, and OpenAI
+
+This is my first AI-powered Bible chatbot, built as an experiment to combine artificial intelligence with Scripture. The goal is to allow anyone to ask questions like:
+
+> “What does the Bible say about love?”  
+> “Who was Moses?”  
+> “Where is the fruit of the Spirit mentioned?”
+
+…and get clear, contextual answers backed by actual Bible verses.
+
+
+
+## 🚀 Why I Built It
+
+I've always been passionate about creating useful digital experiences. With the rise of large language models, I saw an opportunity to build something meaningful—an AI assistant for spiritual guidance, Bible study, or simple curiosity.
+
+I wanted to remove the friction of traditional Bible search and allow more natural, conversational interaction with biblical content.
+
+
+
+## ⚙️ Tech Stack
+
+- **FastAPI** – For building a lightweight and high-performance backend in Python.
+- **ChromaDB** – As a vector database for semantic search of Bible texts.
+- **Sentence Transformers** – To generate local embeddings from Bible text.
+- **OpenAI API** – For generating contextual, natural responses.
+- **dotenv** – To securely manage environment variables and API keys.
+- **Docker** - To use a container for ChromaDB
+- **Next.js + Tailwind CSS** – For building a clean and reactive frontend UI.
+
+
+
+## 🧠 Architecture Overview
+
+```python
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import chromadb
+from chromadb.config import Settings
+from sentence_transformers import SentenceTransformer
+from openai_service import OpenAIService
+import os
+from dotenv import load_dotenv
+```
+
+
+1. Environment & Embedding Model
+
+```python
+load_dotenv()
+embedding_model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+```
+
+
+
+2. Initialize ChromaDB
+
+```python
+chroma_client = chromadb.HttpClient(
+    host="localhost",
+    port=8000
+)
+collection = chroma_client.get_or_create_collection("bible_verses")
+```
+
+
+3. Store Embeddings
+
+```python
+# Bible verses were loaded from a CSV file in the format:
+---
+book,chapter,verse,text
+Genesis,1,1,In the beginning God created the heavens and the earth.
+---
+
+# Then vectorized and added to Chroma batch by batch:
+
+embedding = embedding_model.encode(verse_text)
+batch_size = 100
+for i in range(0, len(docs), batch_size):
+    batch_docs = docs[i:i+batch_size]
+    batch_embeddings = embeddings[i:i+batch_size]
+    batch_ids = [str(uuid.uuid4()) for _ in batch_docs]
+
+    collection.add(
+        ids=batch_ids,
+        documents=batch_docs,
+        embeddings=[e.tolist() for e in batch_embeddings],
+        metadatas=[{ "book": book, "chapter": chap, "verse": verse }],
+    )
+    print(f"Adding batch {i} - {i+batch_size}")
+```
+
+
+4. Semantic Search + GPT Response
+
+```python
+# When a user asks a question:
+
+query = "What does the Bible say about forgiveness?"
+query_embedding = embedding_model.encode([query])
+results = collection.query(query_embeddings=[query_embedding], n_results=3)
+```
+
+Then a context is built from those verses and sent to OpenAI:
+
+```python
+relevant_verse = results['documents'][0] if results['documents'] else []
+prompt = f"Use the following biblical context to answer:\n{relevant_verse}\n\nQuestion: {query}"
+response = chat.completions.create(
+            model=self.model_name,
+            messages=[
+                {"role": "system", "content": "You are a helpful Bible assistant."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=max_toks,
+            temperature=float(os.getenv("OPENAI_TEMPERATURE", "0.7"))
+       )
+print("response", response)
+# Extract the response
+answer = response.choices[0].message.content.strip()
+```
+
+The openai_service.py file handles interaction with the OpenAI Chat API (gpt-4 or gpt-3.5-turbo).
+
+
+
+💻 Frontend
+
+The frontend was built with Next.js (App Router) and styled with Tailwind CSS.
+It sends the user’s question to the FastAPI backend and displays the AI-generated response in real time.
+
+
+
+🔍 Sample Interaction
+```console
+User Input:
+
+What does the Bible say about love?
+
+Bot Response:
+
+>> 1 Corinthians 13:4-5 — Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It does not dishonor others, it is not self-seeking…
+```
+
+⚠️ Challenges
+
+	-	Token limits with GPT-4 and how much biblical context to send.
+	-	Ensuring accuracy and respect when handling sacred texts.
+	-	Balancing semantic relevance vs literal match in ChromaDB.
+	-	Avoiding AI “hallucinations” and anchoring responses in scripture only.
+
+
+
+🔮 Next Steps
+
+	-	Add support for multiple Bible versions (NIV, ESV, RVR60).
+	-	Enable audio replies (TTS).
+	-	Add study plan suggestions.
+	-	Multilingual support.
+	-	Deploy backend via Docker, Render, or Vercel Functions.
+
+
+🙏 Final Thoughts
+
+This project helped me bridge faith and technology in a way that feels personal and impactful. I learned a lot about vector databases, semantic search, and prompt engineering—and I hope this tool can help others in their spiritual journey.

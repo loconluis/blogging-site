@@ -54,7 +54,7 @@ export default function MinimalVerticalTimeline() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-3xl mx-auto mt-24"
+        className="w-full max-w-3xl mx-auto mt-12"
       >
         <h2 className="text-2xl font-semibold mb-8 text-neutral-900 dark:text-neutral-50">
           Work Experience
