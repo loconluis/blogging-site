@@ -12,7 +12,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      body: ['"IBM Plex Mono"'],
+      body: ['"Geist Mono"'],
     },
     // screens: {
     //   xs: "300px",
@@ -23,6 +23,21 @@ module.exports = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      colors: {
+        dark: {
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#e5e5e5',
+          300: '#d4d4d4',
+          400: '#a3a3a3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
+          950: '#0a0a0a',
+        }
       },
       colors: {
         background: "hsl(var(--background))",

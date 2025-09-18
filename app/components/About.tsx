@@ -8,7 +8,7 @@ const About = () => {
   return (
     <Layout>
       <motion.div
-        className="flex flex-col gap-10 lineHeight:1.5 xs:mt-10"
+        className="flex flex-col gap-8 leading-relaxed max-w-3xl mx-auto items-center justify-center min-h-[calc(100vh-200px)]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -29,7 +29,6 @@ const About = () => {
         </p>
         <p>Take a look at my work experience below. ⬇️</p>
       </motion.div>
-      <VerticalTimeline />
     </Layout>
   );
 };

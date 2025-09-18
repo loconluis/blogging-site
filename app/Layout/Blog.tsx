@@ -32,24 +32,41 @@ export default function Blog({
   }, []);
 
   return (
-    <div
-      id="main-blog-container"
-      className="h-screen w-full flex flex-col items-center bg-slate-950 overflow-auto"
-    >
-      <div className="container text-slate-50 max-w-xs m-auto md:max-w-2xl">
-        <div className="mt-10">
-          <Link href={navigation?.link || "/"}>{navigation?.text}</Link>
+    <div className="min-h-screen w-full bg-white dark:bg-neutral-950">
+      {/* Blog Navigation */}
+      <div className="fixed top-0 left-0 right-0 bg-white dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-800 shadow-sm z-50">
+        <div className="container mx-auto px-8 py-4">
+          <div className="flex items-center justify-between">
+            <Link
+              href={navigation?.link || "/"}
+              className="text-base font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
+            >
+              ← {navigation?.text || "Back to Entries"}
+            </Link>
+            <div className="text-sm text-neutral-500 dark:text-neutral-400">
+              {views} views
+            </div>
+          </div>
         </div>
-        <Info frontMatter={frontMatter} views={views} />
-        <motion.div
-          className="flex flex-col gap-10 lineHeight:1.5 my-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          {children}
-        </motion.div>
       </div>
+
+      {/* Main Content */}
+      <div className="pt-24 pb-24">
+        <div className="container mx-auto max-w-3xl px-8">
+          <Info frontMatter={frontMatter} views={views} />
+
+          <motion.div
+            className="flex flex-col gap-8 leading-relaxed my-8 text-neutral-900 dark:text-neutral-50 blog-content"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {children}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Scroll to Top */}
       <ScrollToTop />
     </div>
   );

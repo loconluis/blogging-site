@@ -4,8 +4,8 @@ import dynamic from "next/dynamic";
 
 const DynamicBlogPage = dynamic(() => import("@/components/BlogList"), {
   loading: () => (
-    <div className="h-screen w-full bg-slate-950 flex justify-center items-center">
-      <p className="text-white">Loading posts...</p>,
+    <div className="h-screen w-full bg-white dark:bg-neutral-950 flex justify-center items-center">
+      <p className="text-neutral-900 dark:text-neutral-50">Loading posts...</p>
     </div>
   ),
 });
@@ -17,7 +17,7 @@ export default function Index({ posts }) {
       <Head>
         <title>Home - Luis Locon</title>
       </Head>
-      <DynamicBlogPage posts={posts} />
+      <DynamicBlogPage posts={_posts} />
     </>
   );
 }

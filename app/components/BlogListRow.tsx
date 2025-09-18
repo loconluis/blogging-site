@@ -27,25 +27,24 @@ const BlogListRow = ({ post }: Props) => {
   return (
     <Link href={`/blog/${post.slug}`}>
       <motion.div
-        className="flex flex-row border-b border-slate-500 py-4"
+        className="flex flex-row border-b border-neutral-200 dark:border-neutral-800 py-4 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
         whileHover={"hover"}
         whileTap={{ scale: 0.95 }}
         variants={{
           hover: {
-            backgroundColor: "#de1d8d",
+            backgroundColor: "neutral",
             scale: 1,
-            color: "#fff",
             transition: {
-              duration: 0.5,
+              duration: 0.2,
               ease: "easeOut",
             },
           },
         }}
       >
-        <span className=" w-16 shrink-0 text-white">
+        <span className=" w-16 shrink-0 text-neutral-600 dark:text-neutral-400">
           {format(parseISO(post.publishedAt), "yyyy")}
         </span>
-        <span className="flex-grow break-before-all break-words text-white">
+        <span className="flex-grow break-before-all break-words text-neutral-900 dark:text-neutral-50">
           {post.title}
         </span>
         <motion.span

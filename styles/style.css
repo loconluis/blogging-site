@@ -2,14 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './portfolio.css';
+
 :root {
   /* Colors */
   --dark-grey: #222;
   --grey: #666;
   --off-grey: #888;
   --light-grey: #d4d1d1;
-  --blue: #1c88cb;
-  --pink: #de1d8d;
+  --blue: #0057ff;
+  --pink: #0057ff;
   --dark-blue: #364051;
   --off-white: #f7f7f7;
   --white: #ffffff;
@@ -31,6 +33,7 @@
 * {
   box-sizing: border-box;
 }
+
 h1,
 h2,
 h3,
@@ -41,7 +44,7 @@ h6 {
 }
 
 a {
-  color: var(--pink);
+  color: var(--blue);
   text-decoration: none;
 }
 
@@ -101,7 +104,7 @@ p {
 }
 
 .sidebar-main-navigation-list a:hover {
-  color: var(--pink);
+  color: var(--blue);
   text-decoration: underline;
   cursor: pointer;
 }
@@ -113,6 +116,7 @@ p {
 .sidebar-main-social {
   margin-bottom: var(--line-height);
 }
+
 .sidebar-main-social__info {
   margin-bottom: 0;
   padding-left: 10px;
@@ -125,7 +129,7 @@ p {
 }
 
 .sidebar-main-social__info a:hover {
-  color: var(--pink);
+  color: var(--blue);
   cursor: pointer;
 }
 
@@ -162,7 +166,7 @@ p {
 }
 
 .sidebar-main-social a:hover {
-  color: var(--pink);
+  color: var(--blue);
   cursor: pointer;
 }
 
@@ -174,6 +178,7 @@ p {
 .sidebar:nth-child(3n + 1) {
   clear: both;
 }
+
 .sidebar:nth-child(n) {
   float: left;
   margin-right: 1.875rem;
@@ -258,7 +263,7 @@ p {
 }
 
 .sp-item-anchor {
-  color: var(--pink);
+  color: var(--blue);
   text-decoration: none;
 }
 
@@ -278,7 +283,7 @@ p {
 }
 
 .mail-anchor {
-  color: var(--pink);
+  color: var(--blue);
 }
 
 .sidebar-main-avatar {
@@ -322,7 +327,7 @@ p {
 }
 
 .blog-navbar-button:hover {
-  color: var(--pink);
+  color: var(--blue);
   cursor: pointer;
 }
 
@@ -341,11 +346,13 @@ p {
   justify-content: space-between;
   align-items: center;
 }
+
 .blog-info-data {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
 .blog-info-data-author {
   margin: 0;
   font-weight: 600;
@@ -375,10 +382,11 @@ p {
 }
 
 .pink {
-  color: var(--pink);
+  color: var(--blue);
 }
+
 .blog-info-time {
-  color: var(--pink);
+  color: var(--blue);
   text-transform: uppercase;
   font-weight: 600;
   margin: 0;
@@ -388,7 +396,7 @@ p {
 
 .mdx-anchor {
   text-decoration: none;
-  color: var(--pink);
+  color: var(--blue);
 }
 
 .mdx-anchor:hover {
@@ -412,6 +420,7 @@ pre {
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
+
   /* CSS */
   .container {
     display: flex;
@@ -422,6 +431,7 @@ pre {
     width: 100%;
     text-align: center;
   }
+
   .sidebar-main {
     padding-bottom: var(--padding-medium);
     border-right: none;
@@ -460,6 +470,7 @@ pre {
   p {
     line-height: 1.5rem;
   }
+
   .blog-info {
     flex-direction: column;
   }
@@ -519,7 +530,7 @@ pre {
   --off-grey: #ccc;
   --light-grey: #f7f7f7;
   --blue: #1c88cb;
-  --pink: hsl(325, 65.7%, 65.7%);
+  --pink: #1c88cb;
   --dark-blue: #364051;
   --off-white: #f7f7f7;
   --white: #222;
@@ -553,6 +564,7 @@ pre {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
@@ -585,11 +597,33 @@ pre {
   * {
     @apply border-border;
   }
+
   html {
-    font-family: "IBM Plex Mono", -apple-system, BlinkMacSystemFont, Segoe UI,
+    font-family: "Geist Mono", -apple-system, BlinkMacSystemFont, Segoe UI,
       Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Better blog text readability */
+  .prose, .prose * {
+    color: #374151 !important;
+  }
+
+  .dark .prose, .dark .prose * {
+    color: #d1d5db !important;
+  }
+
+  /* Ensure blog content has proper text contrast */
+  .blog-content, .blog-content p, .blog-content h1, .blog-content h2, .blog-content h3,
+  .blog-content h4, .blog-content h5, .blog-content h6, .blog-content li, .blog-content blockquote {
+    color: #111827 !important;
+  }
+
+  .dark .blog-content, .dark .blog-content p, .dark .blog-content h1, .dark .blog-content h2, .dark .blog-content h3,
+  .dark .blog-content h4, .dark .blog-content h5, .dark .blog-content h6, .dark .blog-content li, .dark .blog-content blockquote {
+    color: #f9fafb !important;
   }
 }
