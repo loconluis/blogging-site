@@ -92,6 +92,11 @@ class MyDocument extends Document {
             rel="stylesheet"
           ></link>
           <link rel="manifest" href="/favicons/manifest.json" />
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6485530247276914"
+            crossOrigin="anonymous"
+          ></script>
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta
             name="msapplication-TileImage"
