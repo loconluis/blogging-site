@@ -11,14 +11,12 @@ export function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true);
-    // Initialize current theme based on stored preference
     const storedTheme = localStorage.getItem('theme') as 'light' | 'dark' | 'system' || 'system';
     setCurrentTheme(storedTheme);
   }, []);
 
   useEffect(() => {
     if (mounted) {
-      // Update current theme when theme changes
       if (theme === 'system') {
         setCurrentTheme('system');
       } else if (theme === 'light' || theme === 'dark') {
@@ -39,7 +37,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-8 h-8" />
+      <div className="w-9 h-9" />
     );
   }
 
@@ -60,7 +58,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={cycleTheme}
-      className="relative inline-flex items-center justify-center w-8 h-8 rounded-lg text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+      className="relative inline-flex items-center justify-center w-9 h-9 rounded-full border border-[#e8e4df] dark:border-[#2a2a2a] text-[#4a4a4a] dark:text-[#a0a0a0] hover:border-[#1d4ed8] hover:text-[#1d4ed8] dark:hover:border-[#60a5fa] dark:hover:text-[#60a5fa] transition-all duration-300 hover:bg-[#1d4ed8]/5 focus:outline-none focus:ring-2 focus:ring-[#1d4ed8]/30"
       title={`Theme: ${getThemeLabel()} (Click to cycle)`}
     >
       <span className="sr-only">Toggle theme (Current: {getThemeLabel()})</span>

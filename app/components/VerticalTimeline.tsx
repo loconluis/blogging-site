@@ -5,7 +5,13 @@ import Link from "next/link";
 export default function MinimalVerticalTimeline() {
   const experiences = [
     {
-      year: "August 2025 - Present",
+      year: "Dec 2025 - Present",
+      company: "GoDaddy / FSL",
+      position: "UI Engineer",
+      description: "Building user interfaces for the commerce area. Using React, TypeScript, and modern frontend technologies",
+    },
+    {
+      year: "August 2025 - November 2025",
       company: "Freelance",
       position: "Senior Software Engineer",
       description: "Working in Mekapal mobile app for the construction industry. Using React Native + Expo + Nativewind + NestJs",
