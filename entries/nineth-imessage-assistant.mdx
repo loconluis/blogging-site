@@ -1,0 +1,63 @@
+---
+title: "Nineth: The Weekend Project That Moved Into My iMessage"
+publishedAt: "2026-08-17"
+description: "A personal assistant that lives in my iMessage, knows what I like, and runs on 225 MB of RAM."
+author: "Luis Locon"
+topic: "AI"
+---
+
+It started the way most of my side projects start: a free weekend and an idea that sounded small. It ended with a new contact in my phone called **9th Bot**.
+
+Its name is Nineth, and it's my personal assistant. It doesn't live in a new app I have to remember to open. It lives in iMessage, right next to my friends and family 😅
+
+![iMessage chat where Nineth introduces itself as a personal assistant and lists what it can help with](/images/nineth-intro.jpg)
+
+## Like texting a friend who knows you
+
+That was the whole idea. No dashboard, no extra tab. I wanted to text it the same way I text a friend, and have it already know what I like.
+
+When I say hi, it introduces itself, tells me what it can do, and asks what I need. It speaks Spanish, English, or Spanglish, which is honestly how I talk most of the time.
+
+## What it does for me
+
+### My calendars
+
+I can ask what I have going on today, and it tells me. When I asked it to stretch my game night with friends from 6:30 to 8:30 pm, it didn't just go ahead and change it. It showed me the change and asked me to confirm first.
+
+That's on purpose. Reading my calendar is fine, but **writing to it always needs my permission**.
+
+### My email, by conversation
+
+Instead of a wall of unread messages, it summarizes my inbox by thread, so I can see what actually needs a reply.
+
+### Tasks, expenses, and budgets
+
+It keeps track of my tasks and my spending. I can ask if I still have budget for something and get a straight answer, in quetzales.
+
+### Reminders and plans for my free time
+
+It reminds me of the things that matter. It also finds real events happening in Guatemala, for those moments when I have free time and no idea what to do with it.
+
+![Nineth suggesting three places for dinner near Zona 14 in Guatemala City, noting the hours and reputation aren't verified and that Q475 is left in the weekly food budget](/images/nineth-dinner.jpg)
+
+This is one of my favorite moments in the demo. I told it I'd be around Zona 14 and asked where I could have dinner. It gave me three options with their distance, reminded me how much was left in my food budget, and said plainly that it hadn't verified the hours or the reviews.
+
+## The real goal: as little compute as possible
+
+The features were the fun part. The real challenge was a single goal I set from day one: run the whole system on the smallest amount of compute I could.
+
+Mission accomplished 🤝🏾
+
+- **4 Docker containers**
+- **225 MB of RAM**, less than a single browser tab
+- Ready to run pretty much anywhere
+
+## Honest by design
+
+Building for efficiency had a side effect I really like. Nineth doesn't keep retrying the same thing in a loop, burning resources while it pretends to work. If something fails, it just tells me. Same when it isn't sure, like with those restaurant hours. I'd much rather have an assistant that admits what it doesn't know than one that confidently makes things up.
+
+## What I learned
+
+A personal assistant doesn't need a huge machine or a fancy interface. It needs to be where you already are, know you a little, ask before it touches your stuff, and be honest when it can't do something.
+
+Not bad for a weekend project.
