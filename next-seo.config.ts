@@ -1,7 +1,8 @@
 const title = "Luis Locon — software engineer in Guatemala";
 const description =
   "Luis Locon is a software engineer in Guatemala City. Notes on building for the web, and on building with AI, written since 2018.";
-const URI = "https://luislocon.dev";
+export const siteUrl = "https://luislocon.dev";
+const URI = siteUrl;
 
 const SEO = {
   title,
