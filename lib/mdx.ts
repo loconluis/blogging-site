@@ -3,10 +3,6 @@ import matter from "gray-matter";
 // import mdxPrism from 'mdx-prism'
 import path from "path";
 import readingTime from "reading-time";
-// import renderToString from "next-mdx-remote/rsc";
-import { serialize } from "next-mdx-remote/serialize";
-
-import MDXComponents from "../app/components/MDXComponents";
 
 const root = process.cwd();
 
@@ -24,16 +20,39 @@ export async function getFiles(type) {
   return fs.readdirSync(path.join(root, "entries", type));
 }
 
+/** Frontmatter only. Share cards and post metadata do not need a compiled MDX body. */
+export function getPostFrontMatter(slug: string): PostFrontMatter | null {
+  if (!/^[A-Za-z0-9_-]+$/.test(slug)) return null;
+  const file = path.join(root, "entries", `${slug}.mdx`);
+  if (!fs.existsSync(file)) return null;
+
+  const source = fs.readFileSync(file, "utf8");
+  const { data } = matter(source);
+  const publishedAt = data.publishedAt;
+  const author = typeof data.author === "string" ? data.author.trim() : "";
+
+  return {
+    slug,
+    title: typeof data.title === "string" && data.title.trim() ? data.title : slug,
+    publishedAt:
+      publishedAt instanceof Date
+        ? publishedAt.toISOString().slice(0, 10)
+        : String(publishedAt ?? ""),
+    description: typeof data.description === "string" ? data.description : undefined,
+    author: author || "Luis Locon",
+    topic: typeof data.topic === "string" ? data.topic : undefined,
+  };
+}
+
 export async function getFileBySlug(type, slug) {
   const source = slug
     ? fs.readFileSync(path.join(root, "entries", type, `${slug}.mdx`), "utf-8")
     : fs.readFileSync(path.join(root, "entries", `${type}.mdx`), "utf-8");
 
   const { data, content } = matter(source);
-  const mdxSource = await serialize(content);
 
   return {
-    mdxSource,
+    content,
     frontMatter: {
       wordCount: content.split(/\s+/gu).length,
       readingTime: readingTime(content),
