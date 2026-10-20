@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import { Highlight } from "prism-react-renderer";
+import { Highlight, type PrismTheme } from "prism-react-renderer";
 
 /** Syntax colours from the page's own palette: lime, white, grey. No rainbow. */
-const pageTheme = {
+const pageTheme: PrismTheme = {
   plain: { color: "#eaeaea", backgroundColor: "#000000" },
   styles: [
     { types: ["comment", "prolog", "doctype", "cdata"], style: { color: "#7d7d7d", fontStyle: "italic" } },
