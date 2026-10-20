@@ -1,6 +1,20 @@
 "use client";
 import { useState } from "react";
-import { Highlight, type PrismTheme } from "prism-react-renderer";
+import { Highlight, Prism, type PrismTheme } from "prism-react-renderer";
+
+// The bundled Prism has no shell grammar. prism-bash registers on the global
+// Prism at load time, so point that at this shared instance first. A static
+// import is hoisted and would run before the assignment.
+const prismGlobal = (typeof global !== "undefined" ? global : window) as typeof globalThis & {
+  Prism: typeof Prism;
+};
+prismGlobal.Prism = Prism;
+require("prismjs/components/prism-bash");
+
+// The grammar aliases bash, sh, and shell. Posts also fence ```console, and
+// ```zsh should highlight the same way.
+Prism.languages.console = Prism.languages.bash;
+Prism.languages.zsh = Prism.languages.bash;
 
 /** Syntax colours from the page's own palette: lime, white, grey. No rainbow. */
 const pageTheme: PrismTheme = {
@@ -29,7 +43,9 @@ const NAMES: Record<string, string> = {
   python: "Python",
   sh: "Shell",
   bash: "Shell",
+  shell: "Shell",
   zsh: "Shell",
+  console: "Console",
   json: "JSON",
   yaml: "YAML",
   yml: "YAML",
