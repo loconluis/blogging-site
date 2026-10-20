@@ -1,84 +1,61 @@
-import { motion } from "framer-motion";
-import Link from "next/link";
-import Avatar from "@/components/Avatar";
 import Layout from "@/Layout/Index";
-import VerticalTimeline from "./VerticalTimeline";
+import { experiences } from "@/lib/content";
+import { useRevealOnScroll } from "@/components/home/useRevealOnScroll";
 
 const About = () => {
+  useRevealOnScroll();
+
   return (
     <Layout>
-      <motion.div
-        className="flex flex-col gap-8 leading-relaxed max-w-3xl mx-auto items-center justify-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-center mb-8"
-        >
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#1d4ed8] dark:text-[#60a5fa]">
-            About Me
-          </span>
-          <h1 className="font-display text-3xl md:text-5xl text-[#1a1a1a] dark:text-[#f0ede8] mt-3 italic">
-            Hello, I'm Luis
-          </h1>
-        </motion.div>
+      <div className="intro-grid">
+        <h1 className="reveal">Hi, I&apos;m Luis.</h1>
+        <p className="lead reveal" data-d="1" style={{ color: "var(--muted)" }}>
+          A software engineer in Guatemala City who builds interfaces for the
+          web and writes about it in public.
+        </p>
+      </div>
 
-        {/* Bio paragraphs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="space-y-6 text-base md:text-lg"
-        >
-          <p className="text-[#4a4a4a] dark:text-[#a0a0a0] leading-[1.8]">
-            I'm a software engineer based in <span className="text-[#1d4ed8] dark:text-[#60a5fa]">Guatemala</span>,
-            with a passion for frontend development and everything related to
-            creating amazing interfaces. I started my career as a full stack
-            developer six years ago, where I developed a deep love for JavaScript
-            and the web.
-          </p>
-
-          <p className="text-[#4a4a4a] dark:text-[#a0a0a0] leading-[1.8]">
-            Since then, I've realized that what I enjoy the most is
-            designing user experiences that are <em className="font-display text-[#1a1a1a] dark:text-[#f0ede8]">attractive, efficient</em>, and most
-            importantly, <em className="font-display text-[#1a1a1a] dark:text-[#f0ede8]">easy to use</em>.
-          </p>
-
-          <p className="text-[#4a4a4a] dark:text-[#a0a0a0] leading-[1.8]">
-            I love tackling complex challenges and solving problems in creative
-            ways. I'm always open to sharing knowledge, teaching, and building
-            communities wherever I go.
-          </p>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-4"
-        >
-          <Link
-            href="/work-experience"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#1a1a1a] dark:bg-[#f0ede8] text-[#faf8f5] dark:text-[#0f0f0f] rounded-full text-sm font-medium hover:bg-[#1d4ed8] dark:hover:bg-[#1d4ed8] dark:hover:text-white transition-all duration-300 group"
+      <div className="prose">
+        <p className="reveal" data-d="2">
+          I started as a full stack developer eight years ago and fell for
+          JavaScript and the web. Since then the work has settled into the part
+          I love most: designing experiences that are attractive, efficient and,
+          above all, easy to use. Commerce at GoDaddy, healthcare at 3 Pillar
+          Global, banking and AI work at Cognits.
+        </p>
+        <p className="reveal" data-d="3">
+          I like complex problems solved in plain ways, and I like sharing what
+          I learn: teaching, writing, and building communities wherever I go.
+          Off the clock I have read at least one book a month since December
+          2016, and I keep the lists here.
+        </p>
+        <p className="reveal" data-d="3">
+          The code for this site is on{" "}
+          <a
+            href="https://github.com/loconluis/blogging-site"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            View my experience
-            <svg
-              className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </motion.div>
-      </motion.div>
+            GitHub
+          </a>
+          .
+        </p>
+      </div>
+
+      <h2 className="role-head reveal" id="experience">
+        Work experience
+      </h2>
+
+      <div className="xp">
+        {experiences.map((exp, i) => (
+          <div className="xp-row reveal" data-d={String(i % 5)} key={exp.company + exp.year}>
+            <span className="co">{exp.company}</span>
+            <span className="yr">{exp.year}</span>
+            <span className="pos">{exp.position}</span>
+            <span className="desc">{exp.description}</span>
+          </div>
+        ))}
+      </div>
     </Layout>
   );
 };

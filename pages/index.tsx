@@ -1,37 +1,43 @@
 import Head from "next/head";
 import { getAllFilesFrontMatter } from "@/lib/mdx";
-import dynamic from "next/dynamic";
-
-const DynamicBlogPage = dynamic(() => import("@/components/BlogList"), {
-  loading: () => (
-    <div className="h-screen w-full bg-white dark:bg-neutral-950 flex justify-center items-center">
-      <p className="text-neutral-900 dark:text-neutral-50">Loading posts...</p>
-    </div>
-  ),
-});
+import { useRevealOnScroll } from "@/components/home/useRevealOnScroll";
+import SiteNav from "@/components/SiteNav";
+import Greeting from "@/components/home/Greeting";
+import Archive from "@/components/home/Archive";
+import AboutStrip from "@/components/home/AboutStrip";
+import SiteFooter from "@/components/home/SiteFooter";
 
 export default function Index({ posts }) {
-  const _posts = sortPost(posts);
+  useRevealOnScroll([posts]);
+
   return (
     <>
       <Head>
-        <title>Home - Luis Locon</title>
+        <title>Luis Locon — software engineer in Guatemala</title>
+        <meta
+          name="description"
+          content="Luis Locon is a software engineer in Guatemala City. Notes on building for the web, written since 2018."
+        />
       </Head>
-      <DynamicBlogPage posts={_posts} />
+
+      <SiteNav />
+      <Greeting
+        count={posts.length}
+        latest={posts[0] ? { slug: posts[0].slug, title: posts[0].title } : undefined}
+      />
+      <main>
+        <Archive posts={posts} />
+        <AboutStrip />
+      </main>
+      <SiteFooter />
     </>
   );
 }
 
-const sortPost = (posts) => {
-  const _posts = posts.sort((a, b) => {
-    return (
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    );
-  });
-  return _posts;
-};
-
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter("/");
-  return { props: { posts } };
+  const sorted = posts.sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
+  return { props: { posts: sorted } };
 }
