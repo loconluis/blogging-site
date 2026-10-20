@@ -1,6 +1,6 @@
-const title = "Blog by Luis Locon";
+const title = "Luis Locon — software engineer in Guatemala";
 const description =
-  "Hi I'm Luis Locon and I really like to teach everything I learn so I created this Blog to write about tech, code and other things.";
+  "Luis Locon is a software engineer in Guatemala City. Notes on building for the web, and on building with AI, written since 2018.";
 const URI = "https://luislocon.dev";
 
 const SEO = {
@@ -30,7 +30,7 @@ const SEO = {
   additionalMetaTags: [
     {
       name: "keywords",
-      content: "desarrollo web, programación, React, Next.js, JavaScript",
+      content: "web development, React, Next.js, TypeScript, JavaScript",
     },
   ],
 };

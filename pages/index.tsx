@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { getAllFilesFrontMatter } from "@/lib/mdx";
 import { useRevealOnScroll } from "@/components/home/useRevealOnScroll";
 import SiteNav from "@/components/SiteNav";
@@ -12,17 +11,9 @@ export default function Index({ posts }) {
 
   return (
     <>
-      <Head>
-        <title>Luis Locon — software engineer in Guatemala</title>
-        <meta
-          name="description"
-          content="Luis Locon is a software engineer in Guatemala City. Notes on building for the web, written since 2018."
-        />
-      </Head>
-
+      {/* Title, description and the OG card come from DefaultSeo (next-seo.config.ts). */}
       <SiteNav />
       <Greeting
-        count={posts.length}
         latest={posts[0] ? { slug: posts[0].slug, title: posts[0].title } : undefined}
       />
       <main>
