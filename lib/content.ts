@@ -9,9 +9,9 @@ export const experiences = [
   {
     year: "Dec 2025 to present",
     company: "GoDaddy / FSL",
-    position: "UI Engineer",
+    position: "Software Engineer · AI Agents",
     description:
-      "Building user interfaces for the commerce area with React, TypeScript and modern frontend tooling.",
+      "Started out building user interfaces for the commerce area with React and TypeScript, and grew into broader engineering work across the stack, powered by AI agents. I orchestrate them to design, implement, review, and test features end to end, which lets me take on more of the system than just the UI.",
   },
   {
     year: "Aug 2025 to Nov 2025",

@@ -8,37 +8,35 @@ const About = () => {
   return (
     <Layout>
       <div className="intro-grid">
-        <h1 className="reveal">Hi, I&apos;m Luis.</h1>
+        <h1 className="reveal">I build software.</h1>
         <p className="lead reveal" data-d="1" style={{ color: "var(--muted)" }}>
-          A software engineer in Guatemala City who builds interfaces for the
-          web and writes about it in public.
+          Interfaces for the web and the systems behind them — from Guatemala
+          City, in TypeScript and React since 2018, lately with AI agents in
+          the loop.
         </p>
       </div>
 
       <div className="prose">
         <p className="reveal" data-d="2">
-          I started as a full stack developer eight years ago and fell for
-          JavaScript and the web. Since then the work has settled into the part
-          I love most: designing experiences that are attractive, efficient and,
-          above all, easy to use. Commerce at GoDaddy, healthcare at 3 Pillar
-          Global, banking and AI work at Cognits.
+          I started as a full stack developer and fell for JavaScript and the
+          web. Since then the work has grown from the interface into the whole
+          system, without losing the part I love most: making things people can
+          actually use. Commerce at GoDaddy, healthcare at 3 Pillar Global,
+          banking and AI work at Cognits.
+        </p>
+        <p className="reveal" data-d="3">
+          AI is part of how I work now, not a way around the work: retrieval
+          agents and applied LLM work at Cognits first, agent-driven
+          engineering at GoDaddy now, and my own agents outside work. It
+          raises what one engineer can hold in mind at once. The judgment
+          still has to be mine.
         </p>
         <p className="reveal" data-d="3">
           I like complex problems solved in plain ways, and I like sharing what
           I learn: teaching, writing, and building communities wherever I go.
           Off the clock I have read at least one book a month since December
-          2016, and I keep the lists here.
-        </p>
-        <p className="reveal" data-d="3">
-          The code for this site is on{" "}
-          <a
-            href="https://github.com/loconluis/blogging-site"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          .
+          2016, and I keep{" "}
+          <a href="/blog/Books-I-read-in-2024">the lists here</a>.
         </p>
       </div>
 

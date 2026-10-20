@@ -7,10 +7,8 @@ import { useEffect, useRef } from "react";
  * covered — and with motion reduced it is a plain, static first screen.
  */
 export default function Greeting({
-  count,
   latest,
 }: {
-  count: number;
   latest?: { slug: string; title: string };
 }) {
   const inner = useRef<HTMLDivElement>(null);
@@ -46,15 +44,19 @@ export default function Greeting({
 
           <div className="actions">
             {latest && (
-              <a className="btn" href={`/blog/${latest.slug}`}>
+              <a
+                className="btn"
+                href={`/blog/${latest.slug}`}
+                title={latest.title}
+              >
                 Read the newest ↗
               </a>
             )}
             <a className="link" href="#writing">
-              All {count} pieces ↓
+              All writing
             </a>
             <a className="link" href="/about">
-              More about me →
+              About me
             </a>
           </div>
         </div>

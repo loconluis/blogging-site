@@ -8,7 +8,7 @@ const links = [
   { name: "GitHub", href: "https://github.com/loconluis", target: "_blank" },
 ];
 
-/** One bar, same four links, on every page. */
+/** One bar, same three links, on every page. */
 export default function SiteNav() {
   const pathname = usePathname();
 

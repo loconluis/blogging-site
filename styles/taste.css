@@ -263,8 +263,8 @@ a { color: inherit; }
   align-items: end;
   margin-bottom: 36px;
 }
-.intro-grid h1 { margin: 0; }
-.intro-grid .lead { margin: 0; }
+.intro-grid h1 { margin: 0; grid-column: 1 / -1; }
+.intro-grid .lead { margin: 0; grid-column: 1 / -1; max-width: 48ch; }
 @media (max-width: 900px) {
   .intro-grid { grid-template-columns: 1fr; align-items: start; }
 }
