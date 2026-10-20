@@ -16,7 +16,7 @@ The goal was simple: reusable skills, composable workflows, and structured conte
 
 It's 28 skills, and every one of them can be called on its own:
 
-- **`lalp`**, the orchestrator. It classifies the task and routes it.
+- **lalp**, the orchestrator. It classifies the task and routes it.
 - **9 playbooks**, one job each: investigate, feature, bugfix, refactor, sweep, perf, prototype, ship, and overnight.
 - **8 principles**, the rules the playbooks lean on, like root cause, smallest change, and never block.
 - **10 disciplines**, the procedures the playbooks call: grill, intent spec, tickets, architect, TDD, code review, unslop, and a few more.
@@ -44,7 +44,7 @@ The spec outlives the PR as the decision record. Every step ends in evidence (th
 
 You enter the mode with a prompt shaped like this:
 
-```console
+```text
 /skill:lalp <what you observed or what you want>
 Done means <something the agent can run or inspect>.
 Keep <existing behavior that must not change>.
@@ -52,7 +52,7 @@ Keep <existing behavior that must not change>.
 
 For example:
 
-```console
+```text
 /skill:lalp the CLI panics on an empty config file
 Done means the repro command exits 0 and a regression test guards it.
 ```
@@ -61,7 +61,7 @@ Once you're in, the mode is sticky. It stays on across turns until the work land
 
 When I don't need the full routing, I just call a skill directly:
 
-```console
+```text
 /skill:lalp-bugfix the login page crashes on empty email
 /skill:lalp-code-review review this diff before I commit
 ```
