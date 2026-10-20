@@ -1,0 +1,93 @@
+---
+title: "lalp-skills: My Portable Skills Stack for Agentic Coding"
+publishedAt: "2026-09-21"
+description: "A portable skill stack built on Intent Specs Driven Development that works across pi, Claude Code, and Codex."
+author: "Luis Locon"
+topic: "AI"
+---
+
+A few weeks ago I started rethinking how I build skills for my agentic coding workflow.
+
+I wanted my skills to stop depending on whichever tool I happened to be using. So I built my own stack: [lalp-skills](https://github.com/loconluis/lalp-skills), a portable skill stack that works with **pi**, **Claude Code**, and **Codex**.
+
+The goal was simple: reusable skills, composable workflows, and structured context that travels with me instead of living inside one tool.
+
+## What's in the stack
+
+It's 28 skills, and every one of them can be called on its own:
+
+- **`lalp`**, the orchestrator. It classifies the task and routes it.
+- **9 playbooks**, one job each: investigate, feature, bugfix, refactor, sweep, perf, prototype, ship, and overnight.
+- **8 principles**, the rules the playbooks lean on, like root cause, smallest change, and never block.
+- **10 disciplines**, the procedures the playbooks call: grill, intent spec, tickets, architect, TDD, code review, unslop, and a few more.
+
+It's all pure markdown plus one installer. No executables, no dependencies, no network calls.
+
+![Flowchart of lalp-skills: the lalp orchestrator routes a task to one of nine playbooks, and the feature playbook follows the ISDD spine from shape to intent spec, the approval gate, tickets, implement, review, and ship](/images/lalp-flow.png)
+
+## The idea: Intent Specs Driven Development
+
+The whole stack revolves around one artifact: the **intent spec**.
+
+Before any code, the agent writes down the why and what must be observably true, never the how. That lands in `specs/<name>.md` with acceptance criteria named A1 to An. Then it stops and waits for me. That's the gate, the one place the mode stops. I can approve it, push back, or explicitly skip it on small obvious changes. Skipping is always my decision, never the agent's.
+
+After that, everything traces back to the spec:
+
+1. Tickets cite the acceptance criteria by name.
+2. Review checks them criterion by criterion.
+3. Ship walks every criterion with evidence.
+4. If the implementation proves the spec wrong, the spec gets reopened and re-approved before the code changes.
+
+The spec outlives the PR as the decision record. Every step ends in evidence (the command and its output), not claims.
+
+## How I use it
+
+You enter the mode with a prompt shaped like this:
+
+```console
+/skill:lalp <what you observed or what you want>
+Done means <something the agent can run or inspect>.
+Keep <existing behavior that must not change>.
+```
+
+For example:
+
+```console
+/skill:lalp the CLI panics on an empty config file
+Done means the repro command exits 0 and a regression test guards it.
+```
+
+Once you're in, the mode is sticky. It stays on across turns until the work lands, or until I say "drop the mode".
+
+When I don't need the full routing, I just call a skill directly:
+
+```console
+/skill:lalp-bugfix the login page crashes on empty email
+/skill:lalp-code-review review this diff before I commit
+```
+
+## One repo, every harness
+
+Installing is one command:
+
+```bash
+./install.sh                          # symlink all 28 skills into pi, Claude Code, and Codex
+HARNESSES="pi claude" ./install.sh    # only some harnesses
+```
+
+Symlink is the default, so I edit the skill once and every harness updates instantly. The installer never deletes anything it didn't create: name collisions get backed up, not overwritten, and skills that aren't part of the stack are never touched.
+
+A couple of rules keep it portable. Frontmatter is just `name` and `description`, skills reference each other by name instead of file paths, and there's never a colon followed by a space inside a description, because that breaks the YAML and pi silently drops the skill.
+
+## Standing on the shoulders of others
+
+This didn't come out of nowhere. Two big inspirations:
+
+- **Matt Pocock's skills**, [The Main Flow](https://www.aihero.dev/skills): the idea-to-ship spine, the spec approval gate, and the spec as a decision record.
+- **pstack by poteto** ([cursor/plugins](https://github.com/cursor/plugins/tree/main/pstack)): the mode router with playbooks, the principles index, and the architect, teach, and unslop skills I adapted here.
+
+## Better systems, not just better models
+
+I'm more and more convinced that agentic development isn't just about better models. It's about building better systems around them 🚀
+
+At least for now 😜
