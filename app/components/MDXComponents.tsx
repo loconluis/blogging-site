@@ -1,32 +1,40 @@
 import CodeBlock from "./CodeBlock";
 import Image from "next/image";
 
-const HeadLine1 = (props) => {
-  return <h1>{props.children}</h1>;
-};
-
+/**
+ * Prose is never hidden behind a scroll: an entry reads the moment it opens.
+ * Fenced code keeps its own chrome (a label and a copy button); inline code is
+ * just inline code.
+ */
 const MDXComponents = {
-  h1: HeadLine1,
-  h2: (props) => <h2>{props.children}</h2>,
-  h3: (props) => <h3>{props.children}</h3>,
-  h4: (props) => <h4>{props.children}</h4>,
-  h5: (props) => <h5>{props.children}</h5>,
-  h6: (props) => <h6>{props.children}</h6>,
-  inlineCode: (props) => <CodeBlock {...props} />,
-  img: (props) => (
-    <Image className="w-full h-auto" width={600} height={400} {...props} />
-  ),
+  h1: (props) => <h1 {...props} />,
+  h2: (props) => <h2 {...props} />,
+  h3: (props) => <h3 {...props} />,
+  h4: (props) => <h4 {...props} />,
+  h5: (props) => <h5 {...props} />,
+  h6: (props) => <h6 {...props} />,
+  pre: (props) => <>{props.children}</>,
   code: CodeBlock,
-  br: (props) => <br />,
+  inlineCode: (props) => <code className="inline-code" {...props} />,
+  img: (props) => (
+    <Image
+      style={{ width: "100%", height: "auto" }}
+      width={1200}
+      height={700}
+      loading="eager"
+      {...props}
+    />
+  ),
+  br: (props) => <br {...props} />,
   a: (props) => (
-    <a href={props.href} target="_blank" className="text-blue-600 ">
+    <a href={props.href} target="_blank" rel="noopener noreferrer" {...props}>
       {props.children}
     </a>
   ),
-  p: (props) => <p>{props.children}</p>,
-  ul: (props) => <ul {...props} className="mdx-list-ul"></ul>,
-  ol: (props) => <ol className="mdx-list-ol">{props.children}</ol>,
-  li: (props) => <li className="mdx-list-item">{props.children}</li>,
+  p: (props) => <p {...props} />,
+  ul: (props) => <ul {...props} />,
+  ol: (props) => <ol {...props} />,
+  li: (props) => <li {...props} />,
 };
 
 export default MDXComponents;

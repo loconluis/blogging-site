@@ -3,22 +3,21 @@ title: "My First AI Agent"
 publishedAt: "2025-09-12"
 description: "My first AI agent"
 author: "Luis Locon"
+topic: "AI"
 ---
 
 
-# 📖 Bible Chatbot using FastAPI, ChromaDB, and OpenAI
-
 This is my first AI-powered Bible chatbot, built as an experiment to combine artificial intelligence with Scripture. The goal is to allow anyone to ask questions like:
 
-> “What does the Bible say about love?”  
-> “Who was Moses?”  
+> “What does the Bible say about love?”
+> “Who was Moses?”
 > “Where is the fruit of the Spirit mentioned?”
 
 …and get clear, contextual answers backed by actual Bible verses.
 
 
 
-## 🚀 Why I Built It
+## Why I built it
 
 I've always been passionate about creating useful digital experiences. With the rise of large language models, I saw an opportunity to build something meaningful—an AI assistant for spiritual guidance, Bible study, or simple curiosity.
 
@@ -26,7 +25,7 @@ I wanted to remove the friction of traditional Bible search and allow more natur
 
 
 
-## ⚙️ Tech Stack
+## Tech stack
 
 - **FastAPI** – For building a lightweight and high-performance backend in Python.
 - **ChromaDB** – As a vector database for semantic search of Bible texts.
@@ -38,7 +37,7 @@ I wanted to remove the friction of traditional Bible search and allow more natur
 
 
 
-## 🧠 Architecture Overview
+## How it works
 
 ```python
 from fastapi import FastAPI, HTTPException
@@ -133,14 +132,14 @@ The openai_service.py file handles interaction with the OpenAI Chat API (gpt-4 o
 
 
 
-💻 Frontend
+ Frontend
 
 The frontend was built with Next.js (App Router) and styled with Tailwind CSS.
 It sends the user’s question to the FastAPI backend and displays the AI-generated response in real time.
 
 
 
-🔍 Sample Interaction
+ Sample Interaction
 ```console
 User Input:
 
@@ -151,7 +150,7 @@ Bot Response:
 >> 1 Corinthians 13:4-5 — Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It does not dishonor others, it is not self-seeking…
 ```
 
-⚠️ Challenges
+ Challenges
 
 	-	Token limits with GPT-4 and how much biblical context to send.
 	-	Ensuring accuracy and respect when handling sacred texts.
@@ -160,7 +159,7 @@ Bot Response:
 
 
 
-🔮 Next Steps
+ Next Steps
 
 	-	Add support for multiple Bible versions (NIV, ESV, RVR60).
 	-	Enable audio replies (TTS).
@@ -169,6 +168,6 @@ Bot Response:
 	-	Deploy backend via Docker, Render, or Vercel Functions.
 
 
-🙏 Final Thoughts
+ Final Thoughts
 
 This project helped me bridge faith and technology in a way that feels personal and impactful. I learned a lot about vector databases, semantic search, and prompt engineering—and I hope this tool can help others in their spiritual journey.

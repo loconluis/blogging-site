@@ -10,6 +10,16 @@ import MDXComponents from "../app/components/MDXComponents";
 
 const root = process.cwd();
 
+export interface PostFrontMatter {
+  slug: string;
+  title: string;
+  publishedAt: string;
+  description?: string;
+  author?: string;
+  topic?: string;
+  readingTime?: number;
+}
+
 export async function getFiles(type) {
   return fs.readdirSync(path.join(root, "entries", type));
 }
@@ -33,10 +43,10 @@ export async function getFileBySlug(type, slug) {
   };
 }
 
-export async function getAllFilesFrontMatter(type) {
+export async function getAllFilesFrontMatter(type: string): Promise<PostFrontMatter[]> {
   const files = fs.readdirSync(path.join(root, "entries", type));
 
-  return files.reduce((allPosts, postSlug) => {
+  return files.reduce<PostFrontMatter[]>((allPosts, postSlug) => {
     const source = fs.readFileSync(
       path.join(root, "entries", type, postSlug),
       "utf8"
@@ -48,7 +58,7 @@ export async function getAllFilesFrontMatter(type) {
         ...data,
         readingTime: readingTime(content)?.minutes,
         slug: postSlug.replace(".mdx", ""),
-      },
+      } as PostFrontMatter,
       ...allPosts,
     ];
   }, []);

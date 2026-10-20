@@ -4,3 +4,6 @@ yarn-error.log
 .env
 .env.local
 .DS_Store
+# design scaffolding, kept out of the repo
+.taste-skill
+tools
