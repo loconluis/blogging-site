@@ -1,0 +1,84 @@
+---
+title: "Quórum: We Spent a Saturday Making the Total Trustworthy"
+publishedAt: "2026-11-23"
+description: "We spent a Saturday at a hackathon building a consolidation engine that checks every row before it enters the total, and traces every figure back to the original cell."
+author: "Luis Locon"
+topic: "AI & Hackathon"
+---
+
+This Saturday I went to the Open2 Build & Pitch hackathon with some friends. We joined the accounting track knowing it would be a hard one. Accounting software almost never excites anyone: tables, reports, and numbers that only make sense to the person who put them together.
+
+So we gave ourselves a goal: what if consolidating the finances of a group of companies was as easy to understand as opening Whoop in the morning?
+
+That's how **Quórum** started.
+
+Whoop doesn't dump data on you. It tells you how you are, why, and what to do. We wanted that for group finance. And when we opened the six company files from the challenge, we realized the real problem wasn't adding. It was being able to trust what you add. Each company sends its file its own way, and errors sneak in that nobody sees until someone asks where a number came from.
+
+## Look first, add later
+
+So **Quórum** checks everything before it adds a single cent. It's a Next.js app, but the part I care about lives in a pipeline of pure functions: read, map, validate, convert, eliminate, consolidate. The engine maps each local account to the group catalog, then runs the rules. No figure in the total comes from a model.
+
+![Diagram of the Quórum engine: six steps from reading files to a consolidation that balances to the cent, with a validation step that holds bad rows out of the total, and an agent that can only cite figures the engine already computed](/images/quorum-pipeline.png)
+
+On the test data it found 54 errors: amounts in euros with no exchange rate, duplicate rows, flipped signs, and sales to companies that weren't even in the group. Just the duplicates and those sales added up to Q15.6 million that would have slipped into the total without anyone noticing. **Quórum** stopped them first, and it shows you where they are and how much they weigh.
+
+![The Quórum load screen after reading the six example files: Q15.6 million of revenue held out of the group total, and a findings list of 54 issues, starting with euro amounts that have no group exchange rate](/images/quorum-app-findings.png)
+
+The part I like is that a finding doesn't just warn. It holds the affected rows out of every later step, until a person acts.
+
+```ts
+function hold(facts: Fact[], findingId: string) {
+  for (const f of facts) if (!f.heldBy.includes(findingId)) f.heldBy.push(findingId);
+}
+```
+
+An amount in a currency the group rate table doesn't carry stays out. A duplicate keeps the first copy and holds the later one. An expense whose sign runs against the rest of the file gets quarantined. A sale booked as intercompany whose counterparty isn't a group company can't be eliminated with anyone, so it stays out of the number too, the same way an unreconciled pair does.
+
+## Then the math can be boring, on purpose
+
+Once the files are fixed, **Quórum** eliminates the sales the group makes to itself, and the consolidation balances to the cent.
+
+After conversion, money is integer cents, rounded once per fact, so the sums can close exactly. Income-statement amounts convert at the month's average rate, balance-sheet amounts at the closing rate. Intercompany lines come out in full on both sides: what matches is an elimination, and what doesn't is shown as unreconciled. That way the group figure stays right even when the two books disagree. If the bridge from the simple sum to the consolidated number doesn't close, the engine throws.
+
+```ts
+if (!b.closes) throw new Error(`The ${k} bridge does not close: ${b.simple} + steps ≠ ${b.consolidated}`);
+```
+
+The venue's internet blocked npm, so we wrote our own xlsx reader with Node's zlib. The engine doesn't need the network anyway. Fonts are local, and it reads the files from disk.
+
+## Every figure has an address
+
+Like Whoop explaining your day, **Quórum** explains the number. Every figure can be followed with a click down to the cell in the original file. Each fact carries a `sourceCellId` that looks like `file!sheet!D42`. Click it and you get a trail from the group number to that cell, plus an excerpt of the row as it actually sits in the file, with the cell marked.
+
+![The Quórum consolidated income statement with the Ingresos figure selected, and a trail on the right that follows that number down to cell E119 of the original spreadsheet](/images/quorum-app-trail.png)
+
+If a number doesn't add up, it tells you. And you can see it in the spreadsheet, not in a tooltip.
+
+## An agent that isn't allowed to do math
+
+We added an agent that answers questions about the processed data. It calculates nothing. Its tools only return figures the engine already computed and formatted. Before an answer is shown, a checker compares every amount and percentage against those tool outputs. If something doesn't match, the model gets one chance to rewrite using only cited numbers. If it still doesn't match, the figure is marked as unverified.
+
+```ts
+export function unverifiedFigures(text: string, toolOutputs: string[]): string[] {
+  const known = toolOutputs.flatMap(figuresIn);
+  const missing = figuresIn(text).filter(
+    (f) =>
+      !known.some(
+        (k) => k.kind === f.kind && Math.abs(k.value - f.value) <= k.tolerance + f.tolerance + 1e-9,
+      ),
+  );
+  return [...new Set(missing.map((f) => f.raw))];
+}
+```
+
+The agent can propose a fix, but only the action a finding already carries, and only after a person approves it. The server checks the proposal again before applying it. The model never touches the total.
+
+If you want to see it in motion, here's a short look at what we built: [Quórum at Build & Pitch](https://www.youtube.com/watch?v=8FgWKzu7x70).
+
+## A good Saturday
+
+I had an amazing Saturday. And I got to code with my friends again.
+
+Thanks Miguel González, Mario Lopez, Eric Pac, and Pablo Grajeda for building this with me. What a team.
+
+Thanks for reading!
